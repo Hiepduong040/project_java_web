@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Company Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --sidebar-width: 280px;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding-top: 20px;
+        }
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 20px;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border: none;
+        }
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid #eee;
+            font-weight: 600;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 15px;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .stat-change {
+            font-size: 14px;
+            color: #28a745;
+        }
+        .nav-link {
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 5px 10px;
+        }
+        .nav-link:hover, .nav-link.active {
+            background-color: #f0f7ff;
+            color: #0d6efd;
+        }
+        .nav-link i {
+            margin-right: 10px;
+        }
+        .transaction-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+        .customer-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .customer-item:last-child {
+            border-bottom: none;
+        }
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .progress-thin {
+            height: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <div class="px-3 mb-4">
+        <h4 class="fw-bold">My Company</h4>
+    </div>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link active" href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-people"></i> Candidate</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-cpu"></i> Technology</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-briefcase"></i> Recruitment Position</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-file-earmark-text"></i> Application</a>
+        </li>
+    </ul>
+    <!-- Profile Card -->
+    <div class="card">
+        <div class="card-header">
+            Profile
+        </div>
+        <div class="card-body text-center">
+            <img src="https://th.bing.com/th/id/OIP.ItvA9eX1ZIYT8NHePqeuCgHaHa?o=7rm=3&rs=1&pid=ImgDetMain" class="rounded-circle mb-3" alt="Profile" width="80">
+            <h5>Jenny Wilson</h5>
+            <p class="text-muted">jen.wilson@example.com</p>
+            <div class="d-flex justify-content-between mb-3">
+                <div>
+                    <h5 class="mb-0">$10,443</h5>
+                    <small class="text-muted">Balance</small>
+                </div>
+                <div>
+                    <h5 class="mb-0">Tubble</h5>
+                    <small class="text-muted">Location</small>
+                </div>
+            </div>
+            <form action="/logout" method="get">
+                <button class="btn btn-outline-danger w-100" type="submit">Log out</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">Databoard</h2>
+        <div>
+            <button class="btn btn-outline-secondary me-2">Export PDF</button>
+            <button class="btn btn-primary">June 2021</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Status Cards -->
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <h6 class="text-muted">TOTAL REVENUE</h6>
+                <div class="stat-value">$12,426</div>
+                <div class="stat-change">+3.96% <i class="bi bi-arrow-up"></i></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <h6 class="text-muted">TOTAL PRODUCT</h6>
+                <div class="stat-value">1,500</div>
+                <div class="stat-change">+1.95% <i class="bi bi-arrow-up"></i></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <h6 class="text-muted">TOTAL INVOICE</h6>
+                <div class="stat-value">84,382</div>
+                <div class="stat-change">+3.86% <i class="bi bi-arrow-up"></i></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <h6 class="text-muted">TOTAL USER</h6>
+                <div class="stat-value">33,493</div>
+                <div class="stat-change">+3.86% <i class="bi bi-arrow-up"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <!-- Sales Report -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>Sales Report</span>
+                    <div class="btn-group btn-group-sm">
+                        <button class="btn btn-outline-secondary">12 Months</button>
+                        <button class="btn btn-outline-secondary active">6 Months</button>
+                        <button class="btn btn-outline-secondary">30 Days</button>
+                        <button class="btn btn-outline-secondary">7 Days</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-3">
+                        <div>
+                            <h5 class="mb-0">$45,591</h5>
+                            <small class="text-muted">Total Sales</small>
+                        </div>
+                        <div class="text-end">
+                            <h5 class="mb-0">$7M</h5>
+                            <small class="text-muted">Target</small>
+                        </div>
+                    </div>
+                    <div class="progress progress-thin mb-3">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 65%"></div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="#" alt="Sales Chart" class="img-fluid me-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Traffic Sources -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Traffic Sources (Last 7 Days)
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Direct</span>
+                                <span class="fw-bold">1,453,582</span>
+                            </div>
+                            <div class="progress progress-thin mt-1">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Referral</span>
+                                <span class="fw-bold">87,974</span>
+                            </div>
+                            <div class="progress progress-thin mt-1">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 15%"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Social Media</span>
+                                <span class="fw-bold">45,211</span>
+                            </div>
+                            <div class="progress progress-thin mt-1">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 10%"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Twitter</span>
+                                <span class="fw-bold">21,893</span>
+                            </div>
+                            <div class="progress progress-thin mt-1">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 5%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <!-- Transactions -->
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>Transactions</span>
+                    <a href="#" class="btn btn-sm btn-link">See All Transactions</a>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipis.</p>
+
+                    <div class="transaction-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-success">Completed</span>
+                            <small class="text-muted">Jan 17, 2022</small>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <div>
+                                <h6 class="mb-0">Visa card **** 4831</h6>
+                                <small class="text-muted">Card payment</small>
+                            </div>
+                            <div class="text-end">
+                                <h6 class="mb-0">$182.94</h6>
+                                <small class="text-muted">Amazon</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="transaction-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-success">Completed</span>
+                            <small class="text-muted">Jan 17, 2022</small>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <div>
+                                <h6 class="mb-0">Mastercard **** 6442</h6>
+                                <small class="text-muted">Card payment</small>
+                            </div>
+                            <div class="text-end">
+                                <h6 class="mb-0">$99.00</h6>
+                                <small class="text-muted">Facebook</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="transaction-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-warning">Pending</span>
+                            <small class="text-muted">Jan 17, 2022</small>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <div>
+                                <h6 class="mb-0">Account **** 882</h6>
+                                <small class="text-muted">Bank payment</small>
+                            </div>
+                            <div class="text-end">
+                                <h6 class="mb-0">$249.94</h6>
+                                <small class="text-muted">Netflix</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="transaction-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-danger">Canceled</span>
+                            <small class="text-muted">Jan 17, 2022</small>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <div>
+                                <h6 class="mb-0">Amex card **** 5666</h6>
+                                <small class="text-muted">Card payment</small>
+                            </div>
+                            <div class="text-end">
+                                <h6 class="mb-0">$199.24</h6>
+                                <small class="text-muted">Amazon Prime</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Customers and Profile -->
+        <div class="col-md-5">
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>Recent Customers</span>
+                    <a href="#" class="btn btn-sm btn-link">See All Customers</a>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Lorem ipsum dolor sit amet.</p>
+
+                    <div class="customer-item">
+                        <div class="d-flex align-items-center">
+                            <img src="https://th.bing.com/th/id/OIP.ItvA9eX1ZIYT8NHePqeuCgHaHa?o=7rm=3&rs=1&pid=ImgDetMain" class="profile-img me-3" alt="Customer">
+                            <div>
+                                <h6 class="mb-0">Jerry Wilson</h6>
+                                <small class="text-muted">w.lawson@example.com</small>
+                            </div>
+                            <div class="ms-auto text-end">
+                                <h6 class="mb-0">$11,234</h6>
+                                <small class="text-muted">Austin</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="customer-item">
+                        <div class="d-flex align-items-center">
+                            <img src="https://th.bing.com/th/id/OIP.ItvA9eX1ZIYT8NHePqeuCgHaHa?o=7rm=3&rs=1&pid=ImgDetMain" class="profile-img me-3" alt="Customer">
+                            <div>
+                                <h6 class="mb-0">Devon Lane</h6>
+                                <small class="text-muted">dat.roberts@example.com</small>
+                            </div>
+                            <div class="ms-auto text-end">
+                                <h6 class="mb-0">$11,159</h6>
+                                <small class="text-muted">New York</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="customer-item">
+                        <div class="d-flex align-items-center">
+                            <img src="https://th.bing.com/th/id/OIP.ItvA9eX1ZIYT8NHePqeuCgHaHa?o=7rm=3&rs=1&pid=ImgDetMain" class="profile-img me-3" alt="Customer">
+                            <div>
+                                <h6 class="mb-0">Jane Cooper</h6>
+                                <small class="text-muted">jgraham@example.com</small>
+                            </div>
+                            <div class="ms-auto text-end">
+                                <h6 class="mb-0">$10,483</h6>
+                                <small class="text-muted">Toledo</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="customer-item">
+                        <div class="d-flex align-items-center">
+                            <img src="https://th.bing.com/th/id/OIP.ItvA9eX1ZIYT8NHePqeuCgHaHa?o=7rm=3&rs=1&pid=ImgDetMain" class="profile-img me-3" alt="Customer">
+                            <div>
+                                <h6 class="mb-0">Dianne Russell</h6>
+                                <small class="text-muted">curtis.d@example.com</small>
+                            </div>
+                            <div class="ms-auto text-end">
+                                <h6 class="mb-0">$9,084</h6>
+                                <small class="text-muted">Naperville</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
