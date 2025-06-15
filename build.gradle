@@ -43,7 +43,10 @@ dependencies {
     // mysql connector
     implementation("mysql:mysql-connector-java:8.0.30")
     // thymeleaf spring
-    implementation("org.thymeleaf:thymeleaf-spring5:3.0.12.RELEASE")
+    implementation("org.thymeleaf:thymeleaf-spring5:3.0.15.RELEASE")
+    implementation 'org.thymeleaf:thymeleaf:3.0.15.RELEASE'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
+
     // để sử dụng jdbc
     implementation 'org.springframework:spring-jdbc:5.3.23' // Thay đổi version nếu cần
     implementation 'mysql:mysql-connector-java:8.0.30' // Thay đổi version nếu cần

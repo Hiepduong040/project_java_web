@@ -1,5 +1,5 @@
 package ra.edu.config;
-
+import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import org.hibernate.SessionFactory;
@@ -68,6 +68,7 @@ public class AppConfig implements WebMvcConfigurer {
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
+        templateEngine.addDialect(new LayoutDialect());
         return templateEngine;
     }
 

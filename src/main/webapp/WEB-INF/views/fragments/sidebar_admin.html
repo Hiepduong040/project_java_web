@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .sidebar {
+            width: 280px;
+            height: 100vh;
+            position: fixed;
+            left: 10px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding-top: 20px;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar-header {
+            padding: 0 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-header h4 {
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-header img {
+            height: 30px;
+        }
+
+        .nav {
+            flex-grow: 1;
+            padding: 0 1rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 5px 0;
+            text-decoration: none;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: #f0f7ff;
+            color: #0d6efd;
+        }
+
+        .nav-link img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .profile-card {
+            margin: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            background-color: #f8f9fa;
+            margin-top: auto;
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .profile-card img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border: 2px solid #f0f0f0;
+            border-radius: 50%;
+        }
+
+        .profile-card hr {
+            margin: 10px 0;
+            border: 1px solid #ddd;
+        }
+
+        .profile-profile {
+            color: #ddd;
+        }
+
+        .logout-btn {
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .text-muted {
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+<div class="sidebar" th:fragment="SIDEBAR_ADMIN">
+    <div>
+        <div class="sidebar-header">
+            <h4>
+                <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749717803/Black_and_White_Collection_15_bljwzw.png" alt="Logo">
+                My Company
+            </h4>
+        </div>
+
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a th:href="@{/admin/dashboard}" class="nav-link">
+                    <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749717696/Vectorsuffix_kq1bsq.png" alt="Dashboard">
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/admin/candidate}" class="nav-link">
+                    <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749717801/Vector_zjegcb.png" alt="Candidate">
+                    Candidate
+                </a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/admin/technology}" class="nav-link">
+                    <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749717802/Group_hcu9sy.png" alt="Technology">
+                    Technology
+                </a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/admin/recruitment}" class="nav-link">
+                    <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749717802/Vector_1_o59p2y.png" alt="Recruitment">
+                    Recruitment Position
+                </a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/admin/application}" class="nav-link">
+                    <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749717802/Vector_2_rtmzni.png" alt="Application">
+                    Application
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="profile-card">
+        <hr />
+        <div class="profile-profile">Profile</div>
+        <div class="profile-header">
+            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749718607/Avatar_1_bmxuni.png" class="rounded-circle" alt="Profile">
+            <div class="profile-info">
+                <h6 class="mb-1">Admin</h6>
+                <p class="text-muted small mb-2">admin@gmail.com</p>
+            </div>
+        </div>
+        <a th:href="@{/logout}" class="btn btn-outline-danger btn-sm logout-btn w-100">
+            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749718811/Left_icon_pk23l6.png" alt="Logout Icon" /> Log out
+        </a>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <style>-->
+<!--        .sidebar {-->
+<!--            width: 280px;-->
+<!--            height: 100vh;-->
+<!--            position: fixed;-->
+<!--            left: 10px;-->
+<!--            background-color: white;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--            padding-top: 20px;-->
+<!--            padding-left: 20px;-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            justify-content: space-between;-->
+<!--        }-->
+
+<!--        .sidebar-header {-->
+<!--            padding: 0 1rem;-->
+<!--            margin-bottom: 1.5rem;-->
+<!--        }-->
+
+<!--        .sidebar-header h4 {-->
+<!--            font-weight: 700;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            gap: 10px;-->
+<!--        }-->
+
+<!--        .sidebar-header img {-->
+<!--            height: 30px;-->
+<!--        }-->
+
+<!--        .nav {-->
+<!--            flex-grow: 1;-->
+<!--            padding: 0 1rem;-->
+<!--        }-->
+
+<!--        .nav-link {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            gap: 12px;-->
+<!--            color: #333;-->
+<!--            padding: 10px 15px;-->
+<!--            border-radius: 5px;-->
+<!--            margin: 5px 0;-->
+<!--            text-decoration: none;-->
+<!--        }-->
+
+<!--        .nav-link:hover, .nav-link.active {-->
+<!--            background-color: #f0f7ff;-->
+<!--            color: #0d6efd;-->
+<!--        }-->
+
+<!--        .nav-link img {-->
+<!--            width: 20px;-->
+<!--            height: 20px;-->
+<!--        }-->
+
+<!--        .profile-card {-->
+<!--            margin: 1rem;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);-->
+<!--            padding: 1rem;-->
+<!--            background-color: #f8f9fa;-->
+<!--            margin-top: auto; /* Đẩy xuống dưới cùng */-->
+<!--        }-->
+
+<!--        .profile-header {-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            align-items: center;-->
+<!--            gap: 10px;-->
+<!--        }-->
+
+<!--        .profile-info {-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            align-items: flex-start;-->
+<!--        }-->
+
+<!--        .profile-card img {-->
+<!--            width: 40px;-->
+<!--            height: 40px;-->
+<!--            object-fit: cover;-->
+<!--            border: 2px solid #f0f0f0;-->
+<!--            border-radius: 50%;-->
+<!--        }-->
+
+<!--        .profile-card hr {-->
+<!--            margin: 10px 0;-->
+<!--            padding-left: 3px;-->
+<!--            padding-right: 3px;-->
+<!--            border: 1px solid #ddd; /* Đường gạch ngang */-->
+<!--            margin-left: 3px;-->
+<!--            margin-right: 3px;-->
+<!--        }-->
+<!--        .profile-profile {-->
+<!--            color : #ddd;-->
+<!--        }-->
+
+<!--        .logout-btn {-->
+<!--            margin-top: 0.5rem;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--        }-->
+
+<!--        .text-muted {-->
+<!--            color: #6c757d; /* Màu xám cho profile */-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="sidebar" th:fragment="SIDEBAR_ADMIN">-->
+<!--    <div>-->
+<!--        <div class="sidebar-header">-->
+<!--            <h4>-->
+<!--                <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749717803/Black_and_White_Collection_15_bljwzw.png" alt="Logo">-->
+<!--                My Company-->
+<!--            </h4>-->
+<!--        </div>-->
+
+<!--        <ul class="nav flex-column">-->
+<!--            <li class="nav-item">-->
+<!--                <a th:href="@{/admin/dashboard}" class="nav-link">-->
+<!--                    <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749717696/Vectorsuffix_kq1bsq.png" alt="Dashboard">-->
+<!--                    Dashboard-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a th:href="@{/admin/candidate}" class="nav-link">-->
+<!--                    <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749717801/Vector_zjegcb.png" alt="Candidate">-->
+<!--                    Candidate-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a th:href="@{/admin/technology}" class="nav-link">-->
+<!--                    <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749717802/Group_hcu9sy.png" alt="Technology">-->
+<!--                    Technology-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a th:href="@{/admin/recruitment}" class="nav-link">-->
+<!--                    <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749717802/Vector_1_o59p2y.png" alt="Recruitment">-->
+<!--                    Recruitment Position-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--                <a th:href="@{/admin/application}" class="nav-link">-->
+<!--                    <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749717802/Vector_2_rtmzni.png" alt="Application">-->
+<!--                    Application-->
+<!--                </a>-->
+<!--            </li>-->
+<!--        </ul>-->
+
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Profile Card &ndash;&gt;-->
+<!--    <div class="profile-card">-->
+<!--        <hr /> &lt;!&ndash; Đường gạch ngang &ndash;&gt;-->
+<!--        <div class="profile-profile">Profile</div>-->
+<!--        <div class="profile-header">-->
+<!--            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749718607/Avatar_1_bmxuni.png" class="rounded-circle" alt="Profile">-->
+<!--            <div class="profile-info">-->
+<!--                <h6 class="mb-1">Admin</h6>-->
+<!--                <p class="text-muted small mb-2">admin@gmail.com</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <a th:href="@{/logout}" class="btn btn-outline-danger btn-sm logout-btn w-100">-->
+<!--            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1749718811/Left_icon_pk23l6.png" alt="Logout Icon" /> Log out-->
+<!--        </a>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

@@ -44,9 +44,11 @@ public class Candidate {
 
     private LocalDate dob;
 
-    @OneToMany(mappedBy = "candidate", fetch = FetchType.LAZY)
+//    @OneToMany(mappedBy = "candidate", fetch = FetchType.LAZY)
+//    private List<CandidateTechnology> candidateTechnologies;
+    // tai toan bo de tranh loi lazy-loader
+    @OneToMany(mappedBy = "candidate", fetch = FetchType.EAGER)
     private List<CandidateTechnology> candidateTechnologies;
-
     @OneToMany(mappedBy = "candidate", fetch = FetchType.LAZY)
     private List<Application> applications;
 }

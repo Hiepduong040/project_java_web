@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Technology</title>
+    <style>
+        :root {
+            --sidebar-width: 280px;
+            --primary-color: #dc3545;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #eee;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-header h2 {
+            margin: 0;
+        }
+
+        .close-btn {
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .close-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .cancel-button {
+            background-color: white;
+            border: 1px solid #ccc;
+            color: #333;
+            padding: 8px 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .save-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .required {
+            color: var(--primary-color);
+        }
+
+        .error-text {
+            color: var(--primary-color);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <div class="form-card">
+        <div class="form-header">
+            <h2>Edit Technology</h2>
+            <a th:href="@{/admin/technology}" class="close-btn">&times;</a>
+        </div>
+
+        <form th:action="@{'/admin/technology/update/' + ${technologyDto.id}}" method="post" th:object="${technologyDto}">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-group">
+                <label>Name <span class="required">*</span></label>
+                <input type="text" th:field="*{name}" class="form-input" placeholder="Enter technology name">
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-text"></p>
+            </div>
+
+            <div class="form-actions">
+                <a th:href="@{/admin/technology}" class="cancel-button">Cancel</a>
+                <button type="submit" class="save-button">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Edit Technology</title>-->
+<!--   <style>-->
+<!--    :root {-->
+<!--        &#45;&#45;sidebar-width: 280px;-->
+<!--        &#45;&#45;primary-color: #0d6efd;-->
+<!--        &#45;&#45;bg-color: #f8f9fa;-->
+<!--        &#45;&#45;text-color: #333;-->
+<!--        &#45;&#45;border-color: #eee;-->
+<!--        &#45;&#45;error-color: #dc3545;-->
+<!--    }-->
+
+<!--    body {-->
+<!--        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;-->
+<!--        background-color: var(&#45;&#45;bg-color);-->
+<!--        margin: 0;-->
+<!--    }-->
+
+<!--    .sidebar {-->
+<!--        width: var(&#45;&#45;sidebar-width);-->
+<!--        height: 100vh;-->
+<!--        position: fixed;-->
+<!--        background-color: white;-->
+<!--        box-shadow: 0 0 10px rgba(0,0,0,0.1);-->
+<!--        padding-top: 20px;-->
+<!--    }-->
+
+<!--    .main-content {-->
+<!--        margin-left: var(&#45;&#45;sidebar-width);-->
+<!--        padding: 20px;-->
+<!--    }-->
+
+<!--    .card, .form-card {-->
+<!--        border-radius: 10px;-->
+<!--        box-shadow: 0 4px 6px rgba(0,0,0,0.05);-->
+<!--        background-color: white;-->
+<!--        border: none;-->
+<!--        padding: 20px;-->
+<!--    }-->
+
+<!--    .card-header, .form-header {-->
+<!--        background-color: white;-->
+<!--        border-bottom: 1px solid var(&#45;&#45;border-color);-->
+<!--        font-weight: 600;-->
+<!--        margin-bottom: 20px;-->
+<!--        display: flex;-->
+<!--        justify-content: space-between;-->
+<!--        align-items: center;-->
+<!--    }-->
+
+<!--    .nav-link {-->
+<!--        color: var(&#45;&#45;text-color);-->
+<!--        padding: 10px 15px;-->
+<!--        border-radius: 5px;-->
+<!--        margin: 5px 10px;-->
+<!--        display: block;-->
+<!--        text-decoration: none;-->
+<!--    }-->
+
+<!--    .nav-link:hover, .nav-link.active {-->
+<!--        background-color: #f0f7ff;-->
+<!--        color: var(&#45;&#45;primary-color);-->
+<!--    }-->
+
+<!--    .profile-img {-->
+<!--        width: 40px;-->
+<!--        height: 40px;-->
+<!--        border-radius: 50%;-->
+<!--        object-fit: cover;-->
+<!--    }-->
+
+<!--    .table th {-->
+<!--        border-top: none;-->
+<!--        font-weight: 600;-->
+<!--        color: #6c757d;-->
+<!--    }-->
+
+<!--    .search-form {-->
+<!--        display: flex;-->
+<!--        align-items: center;-->
+<!--        gap: 10px;-->
+<!--    }-->
+
+<!--    .search-input {-->
+<!--        padding: 8px 12px;-->
+<!--        border: 1px solid #ccc;-->
+<!--        border-radius: 5px;-->
+<!--    }-->
+
+<!--    .search-button, .add-button, .save-button, .cancel-button {-->
+<!--        padding: 8px 14px;-->
+<!--        border: none;-->
+<!--        border-radius: 5px;-->
+<!--        text-decoration: none;-->
+<!--        background-color: var(&#45;&#45;primary-color);-->
+<!--        color: white;-->
+<!--        cursor: pointer;-->
+<!--    }-->
+
+<!--    .cancel-button {-->
+<!--        background-color: #6c757d;-->
+<!--    }-->
+
+<!--    .table-container {-->
+<!--        margin-top: 20px;-->
+<!--    }-->
+
+<!--    .data-table {-->
+<!--        width: 100%;-->
+<!--        border-collapse: collapse;-->
+<!--        background-color: white;-->
+<!--    }-->
+
+<!--    .data-table th, .data-table td {-->
+<!--        padding: 10px;-->
+<!--        border-bottom: 1px solid #e0e0e0;-->
+<!--        text-align: left;-->
+<!--    }-->
+
+<!--    .edit-icon, .delete-icon {-->
+<!--        margin-right: 10px;-->
+<!--        text-decoration: none;-->
+<!--        font-size: 1.2em;-->
+<!--    }-->
+
+<!--    .edit-icon:hover {-->
+<!--        color: #0d6efd;-->
+<!--    }-->
+
+<!--    .delete-icon:hover {-->
+<!--        color: #dc3545;-->
+<!--    }-->
+
+<!--    .no-data {-->
+<!--        text-align: center;-->
+<!--        color: #888;-->
+<!--        font-style: italic;-->
+<!--    }-->
+
+<!--    .form-container {-->
+<!--        display: flex;-->
+<!--        justify-content: center;-->
+<!--        align-items: center;-->
+<!--        min-height: 100vh;-->
+<!--        margin-left: var(&#45;&#45;sidebar-width);-->
+<!--        padding: 20px;-->
+<!--    }-->
+
+<!--    .form-group {-->
+<!--        margin-bottom: 20px;-->
+<!--    }-->
+
+<!--    .form-input {-->
+<!--        width: 100%;-->
+<!--        padding: 10px;-->
+<!--        border: 1px solid #ccc;-->
+<!--        border-radius: 5px;-->
+<!--    }-->
+
+<!--    .form-input.error {-->
+<!--        border-color: var(&#45;&#45;error-color);-->
+<!--    }-->
+
+<!--    .error-text {-->
+<!--        color: var(&#45;&#45;error-color);-->
+<!--        font-size: 0.875rem;-->
+<!--        margin-top: 5px;-->
+<!--    }-->
+
+<!--    .form-actions {-->
+<!--        display: flex;-->
+<!--        justify-content: flex-end;-->
+<!--        gap: 10px;-->
+<!--    }-->
+
+<!--    .required {-->
+<!--        color: var(&#45;&#45;error-color);-->
+<!--    }-->
+
+<!--    .close-btn {-->
+<!--        font-size: 1.5rem;-->
+<!--        text-decoration: none;-->
+<!--        color: #000;-->
+<!--    }-->
+
+<!--    .close-btn:hover {-->
+<!--        color: #dc3545;-->
+<!--    }-->
+
+<!--    .flash-success, .flash-error {-->
+<!--        padding: 10px 15px;-->
+<!--        border-radius: 5px;-->
+<!--        margin-bottom: 15px;-->
+<!--        font-weight: 600;-->
+<!--    }-->
+
+<!--    .flash-success {-->
+<!--        background-color: #d1e7dd;-->
+<!--        color: #0f5132;-->
+<!--    }-->
+
+<!--    .flash-error {-->
+<!--        background-color: #f8d7da;-->
+<!--        color: #842029;-->
+<!--    }-->
+<!--    .form-container {-->
+<!--        display: flex;-->
+<!--        justify-content: center;-->
+<!--        align-items: center;-->
+<!--        min-height: 100vh;-->
+<!--        background-color: var(&#45;&#45;bg-color);-->
+<!--        padding: 20px;-->
+<!--        margin-left: 0; /* loại bỏ sidebar nếu có */-->
+<!--    }-->
+
+<!--    .form-card {-->
+<!--        width: 100%;-->
+<!--        max-width: 500px;-->
+<!--    }-->
+
+<!--    .save-button {-->
+<!--        background-color: #dc3545; /* đỏ */-->
+<!--        color: white;-->
+<!--        border: none;-->
+<!--        border-radius: 5px;-->
+<!--        padding: 8px 14px;-->
+<!--        cursor: pointer;-->
+<!--    }-->
+
+<!--    .cancel-button {-->
+<!--        background-color: white;-->
+<!--        color: #333;-->
+<!--        border: 1px solid #ccc;-->
+<!--        border-radius: 5px;-->
+<!--        padding: 8px 14px;-->
+<!--        cursor: pointer;-->
+<!--    }-->
+
+<!--    .cancel-button:hover {-->
+<!--        background-color: #f1f1f1;-->
+<!--    }-->
+
+<!--   </style>-->
+
+<!--    &lt;!&ndash;    <link rel="stylesheet" href="/css/styles.css">&ndash;&gt;-->
+<!--</head>-->
+
+<!--<body class="centered-body">-->
+
+<!--<div class="form-container">-->
+<!--    <div class="form-card">-->
+<!--        <div class="form-header">-->
+<!--            <h2>Edit Technology</h2>-->
+<!--            <a th:href="@{/admin/technology}" class="close-btn">&times;</a>-->
+<!--        </div>-->
+
+<!--        <form th:action="@{'/admin/technology/update/' + ${technologyDto.id}}" method="post" th:object="${technologyDto}">-->
+<!--            <input type="hidden" th:field="*{id}">-->
+
+<!--            <div class="form-group">-->
+<!--                <label>Name <span class="required">*</span></label>-->
+<!--                <input type="text" th:field="*{name}" class="form-input" placeholder="Enter technology name">-->
+<!--                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-text"></p>-->
+<!--            </div>-->
+
+<!--            <div class="form-actions">-->
+<!--                <a th:href="@{/admin/technology}" class="cancel-button">Cancel</a>-->
+<!--                <button type="submit" class="save-button">Update</button>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
