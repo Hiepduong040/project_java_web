@@ -2,6 +2,7 @@ package ra.edu.entity.candidate;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 import ra.edu.entity.admin.Application;
 
 import javax.persistence.*;
@@ -41,7 +42,7 @@ public class Candidate {
 
     @Lob
     private String description;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dob;
 
     @Column(name = "remember_token")

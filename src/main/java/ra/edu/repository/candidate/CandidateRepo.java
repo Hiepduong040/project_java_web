@@ -12,7 +12,7 @@ public interface CandidateRepo {
     Candidate findById(int id);
 
     void save(Candidate candidate);
-
+//    Candidate findByRememberToken(String token);
     Candidate findByEmail(String email);
 }
 

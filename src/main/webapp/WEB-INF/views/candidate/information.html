@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chỉnh sửa thông tin cá nhân - InternSHIP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+<!-- Navbar -->
+<header class="flex justify-between items-center px-10 py-4 border-b bg-gray-800 text-white">
+    <h1 class="text-xl font-bold">Intern <span class="text-red-600">SHIP</span></h1>
+    <div th:if="${userName != null}" class="relative group">
+        <button class="flex items-center space-x-2 hover:text-red-300 focus:outline-none">
+            <span th:text="${userName}"></span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+        <div class="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-lg
+                    opacity-0 group-hover:opacity-100 transform -translate-y-2
+                    group-hover:translate-y-0 transition-all duration-500
+                    invisible group-hover:visible z-10">
+            <a th:href="@{/information}" class="block px-4 py-2 hover:bg-gray-100">Thông tin</a>
+            <a th:href="@{/my-application}" class="block px-4 py-2 hover:bg-gray-100">Đơn ứng tuyển của tôi</a>
+            <a th:href="@{/logout}" class="block px-4 py-2 text-red-600 hover:bg-gray-100">Đăng xuất</a>
+        </div>
+    </div>
+    <div th:unless="${userName != null}">
+        <a href="/login" class="bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800">Đăng nhập / Đăng ký</a>
+    </div>
+</header>
+
+<div class="max-w-5xl mx-auto py-10 px-4">
+    <h1 class="text-2xl font-bold mb-6">Chỉnh sửa thông tin cá nhân</h1>
+
+    <!-- Success Message -->
+    <div th:if="${success != null}" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
+        <span th:text="${success}"></span>
+    </div>
+
+    <!-- Error Message -->
+    <div th:if="${error != null}" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6" role="alert">
+        <span th:text="${error}"></span>
+    </div>
+
+<!--    &lt;!&ndash; Debug Information &ndash;&gt;-->
+<!--    <div th:text="'Selected Technology IDs: ' + ${selectedTechnologyIds}"></div>-->
+<!--    <div th:text="'Candidate DOB: ' + ${candidate.dob}"></div>-->
+
+    <!-- Form -->
+    <form id="infoForm" th:object="${candidate}" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label class="block font-medium mb-1">Tên <span class="text-red-500">*</span></label>
+                <input type="text" th:field="*{name}" class="w-full border border-gray-300 px-4 py-2 rounded-md" readonly>
+            </div>
+            <div>
+                <label class="block font-medium mb-1">Email <span class="text-red-500">*</span></label>
+                <input type="email" th:field="*{email}" class="w-full border border-gray-300 px-4 py-2 rounded-md" readonly>
+            </div>
+            <div>
+                <label class="block font-medium mb-1">Kinh nghiệm <span class="text-red-500">*</span></label>
+                <input type="number" th:field="*{experience}" class="w-full border border-gray-300 px-4 py-2 rounded-md" readonly>
+            </div>
+            <div>
+                <label class="block font-medium mb-1">Giới tính <span class="text-red-500">*</span></label>
+                <input type="text" th:field="*{gender}" class="w-full border border-gray-300 px-4 py-2 rounded-md" readonly>
+            </div>
+            <div>
+                <label class="block font-medium mb-1">Ngày sinh <span class="text-red-500">*</span></label>
+                <input type="date" th:field="*{dob}" th:value="${candidate.dob != null} ? ${candidate.dob.toString()}" class="w-full border border-gray-300 px-4 py-2 rounded-md" readonly>
+            </div>
+            <div>
+                <label class="block font-medium mb-1">Công nghệ <span class="text-red-500">*</span></label>
+                <div class="space-x-2 mt-2">
+                    <span th:each="tech : ${candidate.candidateTechnologies}"
+                          th:text="${tech.technology.name.replace('_deleted', '')}"
+                          class="bg-orange-100 text-orange-700 text-sm font-medium px-3 py-1 rounded-full"></span>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <label class="block font-medium mb-1">Mô tả <span class="text-red-500">*</span></label>
+            <textarea rows="5" th:field="*{description}" class="w-full border border-gray-300 px-4 py-2 rounded-md" readonly></textarea>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex gap-4">
+            <button type="button" class="px-6 py-2 border border-red-500 text-red-500 rounded hover:bg-red-50" onclick="openModal('changeInfoModal')">Thay đổi thông tin</button>
+            <button type="button" class="px-6 py-2 border border-red-500 text-red-500 rounded hover:bg-red-50" onclick="openModal('changePasswordModal')">Thay đổi mật khẩu</button>
+        </div>
+    </form>
+
+    <!-- Modal Change Password -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 hidden" id="changePasswordModal">
+        <div class="bg-white w-full max-w-lg p-6 rounded-lg shadow-lg relative">
+            <button class="absolute top-4 right-4 text-gray-500 hover:text-gray-700" onclick="closeModal('changePasswordModal')">x</button>
+            <h2 class="text-xl font-semibold mb-4">Thay đổi mật khẩu</h2>
+            <form th:action="@{/information/change-password}" method="post" class="space-y-4">
+                <div>
+                    <label class="block font-medium text-sm mb-1">Mật khẩu cũ <span class="text-red-500">*</span></label>
+                    <input type="password" name="oldPassword" class="w-full border border-gray-300 px-3 py-2 rounded-md" required />
+                </div>
+                <div>
+                    <label class="block font-medium text-sm mb-1">Mật khẩu mới <span class="text-red-500">*</span></label>
+                    <input type="password" name="newPassword" class="w-full border border-gray-300 px-3 py-2 rounded-md" required />
+                </div>
+                <div>
+                    <label class="block font-medium text-sm mb-1">Xác nhận mật khẩu mới <span class="text-red-500">*</span></label>
+                    <input type="password" name="confirmPassword" class="w-full border border-gray-300 px-3 py-2 rounded-md" required />
+                </div>
+                <div class="flex justify-end space-x-4 mt-4">
+                    <button type="button" class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-100" onclick="closeModal('changePasswordModal')">Hủy</button>
+                    <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Change Information -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 hidden" id="changeInfoModal">
+        <div class="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg relative">
+            <button class="absolute top-4 right-4 text-gray-500 hover:text-gray-700" onclick="closeModal('changeInfoModal')">x</button>
+            <h2 class="text-xl font-semibold mb-4">Thay đổi thông tin</h2>
+            <form th:action="@{/information/update}" method="post" th:object="${candidate}" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block font-medium text-sm mb-1">Tên <span class="text-red-500">*</span></label>
+                        <input type="text" th:field="*{name}" class="w-full border border-gray-300 px-3 py-2 rounded-md" required />
+                    </div>
+                    <div>
+                        <label class="block font-medium text-sm mb-1">Email <span class="text-red-500">*</span></label>
+                        <input type="email" th:field="*{email}" class="w-full border border-gray-300 px-3 py-2 rounded-md" readonly />
+                    </div>
+                    <div>
+                        <label class="block font-medium text-sm mb-1">Kinh nghiệm <span class="text-red-500">*</span></label>
+                        <input type="number" th:field="*{experience}" class="w-full border border-gray-300 px-3 py-2 rounded-md" required />
+                    </div>
+                    <div>
+                        <label class="block font-medium mb-1">Giới tính <span class="text-red-500">*</span></label>
+                        <select th:field="*{gender}" class="w-full border border-gray-300 px-4 py-2 rounded-md" required>
+                            <option value="Male">Nam</option>
+                            <option value="Female">Nữ</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-medium text-sm mb-1">Ngày sinh <span class="text-red-500">*</span></label>
+                        <input type="date" th:field="*{dob}" th:value="${candidate.dob != null} ? ${candidate.dob.toString()}" class="w-full border border-gray-300 px-3 py-2 rounded-md" required />
+                    </div>
+                    <div>
+                        <label class="block font-medium mb-1">Công nghệ <span class="text-red-500">*</span></label>
+                        <div class="space-y-2">
+                            <div th:each="tech : ${allTechnologies}">
+                                <label class="flex items-center">
+                                    <input type="checkbox"
+                                           th:value="${tech.id}"
+                                           th:name="technologies"
+                                           th:checked="${selectedTechnologyIds != null and selectedTechnologyIds.contains(tech.id)}" />
+                                    <span th:text="${tech.name.replace('_deleted', '')}" class="ml-2"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-medium text-sm mb-1">Mô tả <span class="text-red-500">*</span></label>
+                    <textarea rows="4" th:field="*{description}" class="w-full border border-gray-300 px-3 py-2 rounded-md" required></textarea>
+                </div>
+                <div class="flex justify-end space-x-4 mt-4">
+                    <button type="button" class="px-4 py-2 border rounded-md text-gray-700 hover:bg-gray-100" onclick="closeModal('changeInfoModal')">Hủy</button>
+                    <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-20 border-t pt-10 text-sm text-gray-700">
+        <p class="font-semibold mb-6">Tổ chức Giáo dục Quốc tế và Phát triển Nguồn Nhân lực - Rikkei Education</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="font-semibold mb-2">📍 Trụ sở Hà Nội</h3>
+                <p>Tầng 7, Tòa nhà A, Tòa nhà Sông Đà, Đường Phạm Hùng, Phường Mỹ Đình 1, Quận Nam Từ Liêm, Hà Nội</p>
+                <p class="mt-2">📞 0862 069 233</p>
+                <p>📧 academy@rikkeisoft.com</p>
+            </div>
+            <div>
+                <h3 class="font-semibold mb-2">Liên kết nhanh</h3>
+                <ul class="space-y-1">
+                    <li>Tổng quan</li>
+                    <li>Vị trí thực tập</li>
+                    <li>Đơn ứng tuyển thực tập</li>
+                    <li>Nhiệm vụ của tôi</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold mb-2">Danh sách chi nhánh</h3>
+                <p class="font-medium">Chi nhánh 1:</p>
+                <p>Tầng 7, Tòa nhà A, Tòa nhà Sông Đà, Đường Phạm Hùng, Phường Mỹ Đình 1, Hà Nội<br>Điện thoại: 0862 069 233</p>
+                <p class="font-medium mt-4">Chi nhánh 2:</p>
+                <p>Tầng 3, Tòa nhà TSA, Số 77 Đường Lê Trung Nghĩa, Phường 12, Quận Tân Bình, TP. Hồ Chí Minh<br>Điện thoại: 0962 703 893</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    function openModal(id) {
+        document.getElementById('changeInfoModal').classList.add('hidden');
+        document.getElementById('changePasswordModal').classList.add('hidden');
+        document.getElementById(id).classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).classList.add('hidden');
+    }
+</script>
+</body>
+</html>

@@ -97,7 +97,6 @@ public class AppConfig implements WebMvcConfigurer {
     }
 
 
-
     private Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");

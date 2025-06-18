@@ -186,6 +186,10 @@
 <%--</body>--%>
 <%--</html>--%>
 
+
+
+
+
 <%--<!DOCTYPE html>--%>
 <%--<html lang="en">--%>
 <%--<head>--%>
@@ -304,184 +308,7 @@
 
 
 
-<%--<!DOCTYPE html>--%>
-<%--<html lang="en">--%>
-<%--<head>--%>
-<%--    <meta charset="UTF-8" />--%>
-<%--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />--%>
-<%--    <title>Internship positions at Rikkei Education</title>--%>
-<%--    <script src="https://cdn.tailwindcss.com"></script>--%>
-<%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />--%>
-<%--</head>--%>
-<%--<body class="bg-gray-100 font-sans ">--%>
-<%--<div class="flex max-w-7xl mx-auto mt-6">--%>
-<%--    <div class="flex gap-6 p-6">--%>
-<%--        <!-- Main content -->--%>
-<%--        <div class="w-2/3 space-y-6">--%>
-<%--            <!-- Job Overview -->--%>
-<%--            <div class="bg-white shadow rounded-md p-6">--%>
-<%--                <h2 class="text-lg font-bold mb-3">Front End Developer</h2>--%>
-<%--                <div class="flex flex-wrap gap-2 mb-3">--%>
-<%--                    <span class="px-2 py-1 bg-blue-100 text-blue-600 text-sm rounded">ReactJS</span>--%>
-<%--                    <span class="px-2 py-1 bg-blue-100 text-blue-600 text-sm rounded">Java</span>--%>
-<%--                </div>--%>
 
-<%--                <div class="grid grid-cols-3 gap-4 text-sm text-gray-600">--%>
-<%--                    <div class="flex items-center gap-2">--%>
-<%--                        <i class="fas fa-map-marker-alt text-red-500"></i> <span>Hà Nội</span>--%>
-<%--                    </div>--%>
-<%--                    <div class="flex items-center gap-2">--%>
-<%--                        <i class="fas fa-clock text-yellow-500"></i> <span>Part Time</span>--%>
-<%--                    </div>--%>
-<%--                    <div class="flex items-center gap-2">--%>
-<%--                        <i class="fas fa-user-graduate text-blue-500"></i> <span>Fresher</span>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-
-<%--                <div class="mt-3 text-sm text-gray-600 flex items-center gap-2">--%>
-<%--                    <i class="fas fa-dollar-sign text-green-500"></i>--%>
-<%--                    <span>Range: 1,200$ - 2,200$</span>--%>
-<%--                </div>--%>
-
-<%--                <div class="mt-1 text-sm text-gray-500 flex items-center gap-2">--%>
-<%--                    <i class="fas fa-calendar-alt text-purple-500"></i>--%>
-<%--                    <span>2 month later</span>--%>
-<%--                </div>--%>
-
-<%--                <button id="applyNowBtn" class="mt-4 w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded">Apply Now</button>--%>
-<%--            </div>--%>
-
-<%--            <!-- Job Description -->--%>
-<%--            <div class="bg-white shadow rounded-md p-6">--%>
-<%--                <h3 class="text-base font-bold border-l-4 border-red-500 pl-2 mb-4">Recruitment Details</h3>--%>
-
-<%--                <h4 class="font-semibold mb-2">I. Mo ta cong viec</h4>--%>
-<%--                <ul class="list-decimal list-inside text-sm text-gray-700 space-y-1">--%>
-<%--                    <li>Tham gia vào quy trình xây dựng Dashboard, phân tích dữ liệu phục vụ nhu cầu vận hành.</li>--%>
-<%--                    <li>Phân tích đưa ra đề xuất phục vụ các quyết định kinh doanh...</li>--%>
-<%--                    <li>Tham gia xây dựng nền tảng phân tích dữ liệu BI-Self Service...</li>--%>
-<%--                    <li>Tham gia quá trình thiết kế và tổ chức dữ liệu...</li>--%>
-<%--                    <li>Triển khai, vận hành, hỗ trợ các dịch vụ khai thác dữ liệu...</li>--%>
-<%--                </ul>--%>
-
-<%--                <h4 class="font-semibold mt-4 mb-2">II. Yeu cau ung vien</h4>--%>
-<%--                <ul class="list-decimal list-inside text-sm text-gray-700 space-y-1">--%>
-<%--                    <li>Sinh viên năm cuối hoặc tốt nghiệp...</li>--%>
-<%--                    <li>Có kinh nghiệm trực quan hóa dữ liệu...</li>--%>
-<%--                    <li>Có kinh nghiệm làm việc với SQL...</li>--%>
-<%--                    <li>Am hiểu về các concept trong Data Warehouse...</li>--%>
-<%--                    <li>Có "business sense" tốt...</li>--%>
-<%--                    <li>Có khả năng xử lý lượng thông tin lớn...</li>--%>
-<%--                    <li>Kỹ năng làm việc nhóm hiệu quả.</li>--%>
-<%--                    <li>Kỹ năng giao tiếp tốt, cởi mở, thân thiện.</li>--%>
-<%--                </ul>--%>
-
-<%--                <button id="applyNowBtnDesc" class="mt-6 w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded">Apply Now</button>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-
-<%--        <!-- Sidebar with other jobs -->--%>
-<%--        <div class="w-1/3 space-y-4">--%>
-<%--            <!-- Thẻ job bên phải -->--%>
-<%--            <div class="bg-white p-4 shadow rounded-md">--%>
-<%--                <h4 class="font-bold mb-2">Front End Developer</h4>--%>
-<%--                <div class="flex flex-wrap gap-2 mb-2">--%>
-<%--                    <span class="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded">ReactJS</span>--%>
-<%--                    <span class="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded">Java</span>--%>
-<%--                </div>--%>
-<%--                <p class="text-sm text-gray-600">Scale: Not updated</p>--%>
-<%--                <p class="text-sm text-gray-600">Field: Information technology</p>--%>
-<%--                <p class="text-sm text-gray-600">Location: Ha Noi City</p>--%>
-<%--            </div>--%>
-<%--            <!-- Danh sách các job khác -->--%>
-<%--            <div class="space-y-3">--%>
-<%--                <div class="border border-gray-300 p-4 rounded-md flex justify-between items-start">--%>
-<%--                    <div class="flex space-x-4">--%>
-<%--                        <div class="text-gray-500 text-3xl"><img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750086810/Frame_5_epvny2.png" alt=""></div>--%>
-<%--                        <div>--%>
-<%--                            <p class="font-bold text-gray-800">Front End Developer</p>--%>
-<%--                            <div class="flex space-x-2 mt-1">--%>
-<%--                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">ReactJS</span>--%>
-<%--                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">Java</span>--%>
-<%--                            </div>--%>
-<%--                            <p class="text-gray-500 text-sm mt-1">2 month later</p>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <button class="bg-red-500 text-white px-4 py-1 rounded-md h-fit">Apply</button>--%>
-<%--                </div>--%>
-<%--                <div class="border border-gray-300 p-4 rounded-md flex justify-between items-start">--%>
-<%--                    <div class="flex space-x-4">--%>
-<%--                        <div class="text-gray-500 text-3xl"><img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750086810/Frame_5_epvny2.png" alt=""></div>--%>
-<%--                        <div>--%>
-<%--                            <p class="font-bold text-gray-800">Front End Developer</p>--%>
-<%--                            <div class="flex space-x-2 mt-1">--%>
-<%--                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">ReactJS</span>--%>
-<%--                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">Java</span>--%>
-<%--                            </div>--%>
-<%--                            <p class="text-gray-500 text-sm mt-1">2 month later</p>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                    <button class="bg-red-500 text-white px-4 py-1 rounded-md h-fit">Apply</button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-
-<%--<!-- Apply Now Modal -->--%>
-<%--<div id="applyModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">--%>
-<%--    <div class="bg-white p-6 rounded-lg shadow-lg w-96">--%>
-<%--        <div class="flex justify-between items-center mb-4">--%>
-<%--            <h2 class="text-lg font-semibold">Apply Now</h2>--%>
-<%--            <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700">&times;</button>--%>
-<%--        </div>--%>
-<%--        <form class="space-y-4">--%>
-<%--            <div>--%>
-<%--                <label class="block text-sm font-medium text-gray-700">CV URL <span class="text-red-500">*</span></label>--%>
-<%--                <input type="text" id="cvUrl" class="w-full border border-gray-300 rounded-md px-3 py-2 mt-1" placeholder="Enter CV URL" />--%>
-<%--            </div>--%>
-<%--            <div class="flex justify-end space-x-2">--%>
-<%--                <button type="button" id="cancelModalBtn" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100">Cancel</button>--%>
-<%--                <button type="submit" id="saveModalBtn" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">Save</button>--%>
-<%--            </div>--%>
-<%--        </form>--%>
-<%--    </div>--%>
-<%--</div>--%>
-
-<%--<script>--%>
-<%--    // Get all Apply Now buttons--%>
-<%--    const applyButtons = document.querySelectorAll('#applyNowBtn, #applyNowBtnDesc, .bg-red-500');--%>
-<%--    const modal = document.getElementById('applyModal');--%>
-<%--    const closeModalBtn = document.getElementById('closeModalBtn');--%>
-<%--    const cancelModalBtn = document.getElementById('cancelModalBtn');--%>
-
-<%--    // Open modal when Apply Now is clicked--%>
-<%--    applyButtons.forEach(button => {--%>
-<%--        button.addEventListener('click', (e) => {--%>
-<%--            e.preventDefault(); // Prevent form submission or default behavior--%>
-<%--            modal.classList.remove('hidden');--%>
-<%--        });--%>
-<%--    });--%>
-
-<%--    // Close modal--%>
-<%--    closeModalBtn.addEventListener('click', () => {--%>
-<%--        modal.classList.add('hidden');--%>
-<%--    });--%>
-
-<%--    cancelModalBtn.addEventListener('click', () => {--%>
-<%--        modal.classList.add('hidden');--%>
-<%--    });--%>
-
-<%--    // Handle form submission (optional - add your logic here)--%>
-<%--    document.querySelector('#applyModal form').addEventListener('submit', (e) => {--%>
-<%--        e.preventDefault();--%>
-<%--        const cvUrl = document.getElementById('cvUrl').value;--%>
-<%--        console.log('CV URL submitted:', cvUrl);--%>
-<%--        modal.classList.add('hidden'); // Close modal after submission--%>
-<%--    });--%>
-<%--</script>--%>
-<%--</body>--%>
-<%--</html>--%>
 
 
 <!DOCTYPE html>
@@ -489,281 +316,461 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Application</title>
+    <title>Internship positions at Rikkei Education</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body class="bg-gray-100 font-sans">
-<div class="max-w-7xl mx-auto mt-6">
-    <!-- Header -->
-    <div class="bg-white shadow-md p-4 flex justify-between items-center rounded-t-md">
-        <h1 class="text-xl font-bold text-red-600">My Application</h1>
-<%--        <span class="text-gray-500 text-sm">Created At</span>--%>
-    </div>
+<body class="bg-gray-100 font-sans ">
+<div class="flex max-w-7xl mx-auto mt-6">
+    <div class="flex gap-6 p-6">
+        <!-- Main content -->
+        <div class="w-2/3 space-y-6">
+            <!-- Job Overview -->
+            <div class="bg-white shadow rounded-md p-6">
+                <h2 class="text-lg font-bold mb-3">Front End Developer</h2>
+                <div class="flex flex-wrap gap-2 mb-3">
+                    <span class="px-2 py-1 bg-blue-100 text-blue-600 text-sm rounded">ReactJS</span>
+                    <span class="px-2 py-1 bg-blue-100 text-blue-600 text-sm rounded">Java</span>
+                </div>
 
-    <!-- Table -->
-    <div class="bg-white shadow-md rounded-b-md overflow-hidden">
-        <table class="w-full text-sm text-gray-700">
-            <thead class="bg-gray-50">
-            <tr>
-                <th class="py-3 px-4 text-left">STT</th>
-                <th class="py-3 px-4 text-left">Recruitment Name</th>
-                <th class="py-3 px-4 text-left">Technology</th>
-                <th class="py-3 px-4 text-left">Created At</th>
-                <th class="py-3 px-4 text-left">Update At</th>
-                <th class="py-3 px-4 text-left">Process</th>
-                <th class="py-3 px-4 text-left">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="border-b">
-                <td class="py-3 px-4">1</td>
-                <td class="py-3 px-4">Front End Developer</td>
-                <td class="px-4 py-2 space-x-1">
-                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>
-                    <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded mt-1">Back End</span>
-                </td>
-                <td class="py-3 px-4">10/10/2022</td>
-                <td class="py-3 px-4">10/11/2022</td>
-                <td class="py-3 px-4">
-                    <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded">PENDING</span>
-                </td>
-                <td class="py-3 px-4">
-                    <button>
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">
-                    </button>
-                    <button class="open-modal text-red-500 hover:text-red-700">
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />
-                    </button>
-                </td>
-            </tr>
-            <tr class="border-b">
-                <td class="py-3 px-4">2</td>
-                <td class="py-3 px-4">Back End Developer</td>
-                <td class="py-3 px-4">
-                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>
-                </td>
-                <td class="py-3 px-4">10/10/2022</td>
-                <td class="py-3 px-4">10/11/2022</td>
-                <td class="py-3 px-4">
-                    <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded">PENDING</span>
-                </td>
-                <td class="py-3 px-4">
-                    <button>
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">
-                    </button>
-                    <button class="open-modal text-red-500 hover:text-red-700">
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />
-                    </button>
-                </td>
-            </tr>
-            <tr class="border-b">
-                <td class="py-3 px-4">3</td>
-                <td class="py-3 px-4">Full Stack Developer</td>
-                <td class="px-4 py-2 space-x-1">
-                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>
-                    <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded mt-1">Back End</span>
-                </td>
-                <td class="py-3 px-4">10/10/2022</td>
-                <td class="py-3 px-4">10/11/2022</td>
-                <td class="py-3 px-4">
-                    <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded">PENDING</span>
-                </td>
-                <td class="py-3 px-4">
-                    <button>
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">
-                    </button>
-                    <button class="open-modal text-red-500 hover:text-red-700">
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />
-                    </button>
-                </td>
-            </tr>
-            <tr class="border-b">
-                <td class="py-3 px-4">4</td>
-                <td class="py-3 px-4">Solution Architect RikkeiSoft</td>
-                <td class="py-3 px-4">
-                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>
-                </td>
-                <td class="py-3 px-4">10/10/2022</td>
-                <td class="py-3 px-4">10/11/2022</td>
-                <td class="py-3 px-4">
-                    <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded">HANDLING</span>
-                </td>
-                <td class="py-3 px-4">
-                    <button>
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">
-                    </button>
-                    <button class="open-modal text-red-500 hover:text-red-700">
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />
-                    </button>
-                </td>
-            </tr>
-            <tr class="border-b">
-                <td class="py-3 px-4">5</td>
-                <td class="py-3 px-4">Project Manager LG</td>
-                <td class="px-4 py-2 space-x-1">
-                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>
-                    <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded mt-1">Back End</span>
-                </td>
+                <div class="grid grid-cols-3 gap-4 text-sm text-gray-600">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-map-marker-alt text-red-500"></i> <span>Hà Nội</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-clock text-yellow-500"></i> <span>Part Time</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-user-graduate text-blue-500"></i> <span>Fresher</span>
+                    </div>
+                </div>
 
-                <td class="py-3 px-4">10/10/2022</td>
-                <td class="py-3 px-4">10/11/2022</td>
-                <td class="py-3 px-4">
-                    <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded">HANDLING</span>
-                </td>
-                <td class="py-3 px-4">
-                    <button>
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">
-                    </button>
-                    <button class="open-modal text-red-500 hover:text-red-700">
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />
-                    </button>
-                </td>
-            </tr>
-            <tr class="border-b">
-                <td class="py-3 px-4">6</td>
-                <td class="py-3 px-4">Tech Lead Toyota</td>
-                <td class="py-3 px-4">
-                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>
-                </td>
-                <td class="py-3 px-4">10/10/2022</td>
-                <td class="py-3 px-4">10/11/2022</td>
-                <td class="py-3 px-4">
-                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">INTERVIEWING</span>
-                </td>
-                <td class="py-3 px-4">
-                    <button>
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">
-                    </button>
-                    <button class="open-modal text-red-500 hover:text-red-700">
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />
-                    </button>
-                </td>
-            </tr>
-            <tr class="border-b">
-                <td class="py-3 px-4">7</td>
-                <td class="py-3 px-4">Software Engineer Mobile</td>
-                <td class="px-4 py-2 space-x-1">
-                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>
-                    <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded mt-1">Back End</span>
-                </td>
-                <td class="py-3 px-4">10/10/2022</td>
-                <td class="py-3 px-4">10/11/2022</td>
-                <td class="py-3 px-4">
-                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">INTERVIEWING</span>
-                </td>
-                <td class="py-3 px-4">
-                    <button>
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">
-                    </button>
-                    <button class="open-modal text-red-500 hover:text-red-700">
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td class="py-3 px-4">8</td>
-                <td class="py-3 px-4">BrSE Yamaha</td>
-                <td class="py-3 px-4">
-                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>
-                </td>
-                <td class="py-3 px-4">10/10/2022</td>
-                <td class="py-3 px-4">10/11/2022</td>
-                <td class="py-3 px-4">
-                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">DONE</span>
-                </td>
-                <td class="py-3 px-4">
-                    <button>
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">
-                    </button>
-                    <button class="open-modal text-red-500 hover:text-red-700">
-                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+                <div class="mt-3 text-sm text-gray-600 flex items-center gap-2">
+                    <i class="fas fa-dollar-sign text-green-500"></i>
+                    <span>Range: 1,200$ - 2,200$</span>
+                </div>
 
-    <!-- Pagination -->
-    <div class="bg-white shadow-md p-4 flex justify-end items-center rounded-b-md">
-        <div class="flex space-x-2">
-            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">Prev</button>
-            <button class="px-3 py-1 bg-gray-200 text-gray-700">1</button>
-            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">2</button>
-            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">3</button>
-            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">4</button>
-            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">5</button>
-            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">6</button>
-            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">7</button>
-            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">Next</button>
+                <div class="mt-1 text-sm text-gray-500 flex items-center gap-2">
+                    <i class="fas fa-calendar-alt text-purple-500"></i>
+                    <span>2 month later</span>
+                </div>
+
+                <button id="applyNowBtn" class="mt-4 w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded">Apply Now</button>
+            </div>
+
+            <!-- Job Description -->
+            <div class="bg-white shadow rounded-md p-6">
+                <h3 class="text-base font-bold border-l-4 border-red-500 pl-2 mb-4">Recruitment Details</h3>
+
+                <h4 class="font-semibold mb-2">I. Mo ta cong viec</h4>
+                <ul class="list-decimal list-inside text-sm text-gray-700 space-y-1">
+                    <li>Tham gia vào quy trình xây dựng Dashboard, phân tích dữ liệu phục vụ nhu cầu vận hành.</li>
+                    <li>Phân tích đưa ra đề xuất phục vụ các quyết định kinh doanh...</li>
+                    <li>Tham gia xây dựng nền tảng phân tích dữ liệu BI-Self Service...</li>
+                    <li>Tham gia quá trình thiết kế và tổ chức dữ liệu...</li>
+                    <li>Triển khai, vận hành, hỗ trợ các dịch vụ khai thác dữ liệu...</li>
+                </ul>
+
+                <h4 class="font-semibold mt-4 mb-2">II. Yeu cau ung vien</h4>
+                <ul class="list-decimal list-inside text-sm text-gray-700 space-y-1">
+                    <li>Sinh viên năm cuối hoặc tốt nghiệp...</li>
+                    <li>Có kinh nghiệm trực quan hóa dữ liệu...</li>
+                    <li>Có kinh nghiệm làm việc với SQL...</li>
+                    <li>Am hiểu về các concept trong Data Warehouse...</li>
+                    <li>Có "business sense" tốt...</li>
+                    <li>Có khả năng xử lý lượng thông tin lớn...</li>
+                    <li>Kỹ năng làm việc nhóm hiệu quả.</li>
+                    <li>Kỹ năng giao tiếp tốt, cởi mở, thân thiện.</li>
+                </ul>
+
+                <button id="applyNowBtnDesc" class="mt-6 w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded">Apply Now</button>
+            </div>
         </div>
-    </div>
-</div><!-- Modal -->
-<!-- Modal -->
-<div id="approveModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-    <div class="bg-white p-6 rounded shadow-lg w-full max-w-md relative">
-        <button id="closeModal" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
-        <h2 class="text-lg font-semibold mb-2">Approve Interview</h2>
-        <div class="space-y-2">
-            <p><strong>Created At:</strong> <span id="createdAt">10/10/2022</span></p>
-            <p><strong>Update At:</strong> <span id="updateAt">10/11/2022</span></p>
-            <p><strong>Interview Time:</strong> <span id="interviewTime">20/10/2022 10:10 AM</span></p>
-            <p><strong>Interview Link:</strong> <a href="#" id="interviewLink" class="text-blue-500 underline">Join Meeting</a></p>
-        </div>
-        <div class="flex justify-end mt-4 space-x-2">
-            <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300" id="cancelBtn">Cancel</button>
-            <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700" id="approveBtn">Approve</button>
+
+        <!-- Sidebar with other jobs -->
+        <div class="w-1/3 space-y-4">
+            <!-- Thẻ job bên phải -->
+            <div class="bg-white p-4 shadow rounded-md">
+                <h4 class="font-bold mb-2">Front End Developer</h4>
+                <div class="flex flex-wrap gap-2 mb-2">
+                    <span class="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded">ReactJS</span>
+                    <span class="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded">Java</span>
+                </div>
+                <p class="text-sm text-gray-600">Scale: Not updated</p>
+                <p class="text-sm text-gray-600">Field: Information technology</p>
+                <p class="text-sm text-gray-600">Location: Ha Noi City</p>
+            </div>
+            <!-- Danh sách các job khác -->
+            <div class="space-y-3">
+                <div class="border border-gray-300 p-4 rounded-md flex justify-between items-start">
+                    <div class="flex space-x-4">
+                        <div class="text-gray-500 text-3xl"><img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750086810/Frame_5_epvny2.png" alt=""></div>
+                        <div>
+                            <p class="font-bold text-gray-800">Front End Developer</p>
+                            <div class="flex space-x-2 mt-1">
+                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">ReactJS</span>
+                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">Java</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mt-1">2 month later</p>
+                        </div>
+                    </div>
+                    <button class="bg-red-500 text-white px-4 py-1 rounded-md h-fit">Apply</button>
+                </div>
+                <div class="border border-gray-300 p-4 rounded-md flex justify-between items-start">
+                    <div class="flex space-x-4">
+                        <div class="text-gray-500 text-3xl"><img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750086810/Frame_5_epvny2.png" alt=""></div>
+                        <div>
+                            <p class="font-bold text-gray-800">Front End Developer</p>
+                            <div class="flex space-x-2 mt-1">
+                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">ReactJS</span>
+                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">Java</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mt-1">2 month later</p>
+                        </div>
+                    </div>
+                    <button class="bg-red-500 text-white px-4 py-1 rounded-md h-fit">Apply</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<%--<style>--%>
-<%--    .modal {--%>
-<%--        display: none;--%>
-<%--        position: fixed;--%>
-<%--        top: 0;--%>
-<%--        left: 0;--%>
-<%--        width: 100%;--%>
-<%--        height: 100%;--%>
-<%--        background-color: rgba(0, 0, 0, 0.5);--%>
-<%--        justify-content: center;--%>
-<%--        align-items: center;--%>
-<%--    }--%>
-<%--    .modal-content {--%>
-<%--        background-color: white;--%>
-<%--        padding: 20px;--%>
-<%--        border-radius: 5px;--%>
-<%--        width: 300px;--%>
-<%--        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);--%>
-<%--        text-align: left;--%>
-<%--    }--%>
-<%--    .close {--%>
-<%--        float: right;--%>
-<%--        font-size: 24px;--%>
-<%--        cursor: pointer;--%>
-<%--    }--%>
-<%--</style>--%>
-<script>
-    const modal = document.getElementById("approveModal");
-    const openBtns = document.querySelectorAll(".open-modal");
-    const closeModalBtn = document.getElementById("closeModal");
-    const cancelBtn = document.getElementById("cancelBtn");
 
-    openBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-            modal.classList.remove("hidden");
+<!-- Apply Now Modal -->
+<div id="applyModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-semibold">Apply Now</h2>
+            <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700">&times;</button>
+        </div>
+        <form class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">CV URL <span class="text-red-500">*</span></label>
+                <input type="text" id="cvUrl" class="w-full border border-gray-300 rounded-md px-3 py-2 mt-1" placeholder="Enter CV URL" />
+            </div>
+            <div class="flex justify-end space-x-2">
+                <button type="button" id="cancelModalBtn" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100">Cancel</button>
+                <button type="submit" id="saveModalBtn" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Get all Apply Now buttons
+    const applyButtons = document.querySelectorAll('#applyNowBtn, #applyNowBtnDesc, .bg-red-500');
+    const modal = document.getElementById('applyModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const cancelModalBtn = document.getElementById('cancelModalBtn');
+
+    // Open modal when Apply Now is clicked
+    applyButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent form submission or default behavior
+            modal.classList.remove('hidden');
         });
     });
 
-    closeModalBtn.addEventListener("click", () => {
-        modal.classList.add("hidden");
+    // Close modal
+    closeModalBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
     });
 
-    cancelBtn.addEventListener("click", () => {
-        modal.classList.add("hidden");
+    cancelModalBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    // Handle form submission (optional - add your logic here)
+    document.querySelector('#applyModal form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const cvUrl = document.getElementById('cvUrl').value;
+        console.log('CV URL submitted:', cvUrl);
+        modal.classList.add('hidden'); // Close modal after submission
     });
 </script>
 </body>
 </html>
+
+
+<%--<!DOCTYPE html>--%>
+<%--<html lang="en">--%>
+<%--<head>--%>
+<%--    <meta charset="UTF-8" />--%>
+<%--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />--%>
+<%--    <title>My Application</title>--%>
+<%--    <script src="https://cdn.tailwindcss.com"></script>--%>
+<%--</head>--%>
+<%--<body class="bg-gray-100 font-sans">--%>
+<%--<div class="max-w-7xl mx-auto mt-6">--%>
+<%--    <!-- Header -->--%>
+<%--    <div class="bg-white shadow-md p-4 flex justify-between items-center rounded-t-md">--%>
+<%--        <h1 class="text-xl font-bold text-red-600">My Application</h1>--%>
+<%--&lt;%&ndash;        <span class="text-gray-500 text-sm">Created At</span>&ndash;%&gt;--%>
+<%--    </div>--%>
+
+<%--    <!-- Table -->--%>
+<%--    <div class="bg-white shadow-md rounded-b-md overflow-hidden">--%>
+<%--        <table class="w-full text-sm text-gray-700">--%>
+<%--            <thead class="bg-gray-50">--%>
+<%--            <tr>--%>
+<%--                <th class="py-3 px-4 text-left">STT</th>--%>
+<%--                <th class="py-3 px-4 text-left">Recruitment Name</th>--%>
+<%--                <th class="py-3 px-4 text-left">Technology</th>--%>
+<%--                <th class="py-3 px-4 text-left">Created At</th>--%>
+<%--                <th class="py-3 px-4 text-left">Update At</th>--%>
+<%--                <th class="py-3 px-4 text-left">Process</th>--%>
+<%--                <th class="py-3 px-4 text-left">Actions</th>--%>
+<%--            </tr>--%>
+<%--            </thead>--%>
+<%--            <tbody>--%>
+<%--            <tr class="border-b">--%>
+<%--                <td class="py-3 px-4">1</td>--%>
+<%--                <td class="py-3 px-4">Front End Developer</td>--%>
+<%--                <td class="px-4 py-2 space-x-1">--%>
+<%--                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>--%>
+<%--                    <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded mt-1">Back End</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">10/10/2022</td>--%>
+<%--                <td class="py-3 px-4">10/11/2022</td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded">PENDING</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <button>--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">--%>
+<%--                    </button>--%>
+<%--                    <button class="open-modal text-red-500 hover:text-red-700">--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />--%>
+<%--                    </button>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
+<%--            <tr class="border-b">--%>
+<%--                <td class="py-3 px-4">2</td>--%>
+<%--                <td class="py-3 px-4">Back End Developer</td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">10/10/2022</td>--%>
+<%--                <td class="py-3 px-4">10/11/2022</td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded">PENDING</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <button>--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">--%>
+<%--                    </button>--%>
+<%--                    <button class="open-modal text-red-500 hover:text-red-700">--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />--%>
+<%--                    </button>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
+<%--            <tr class="border-b">--%>
+<%--                <td class="py-3 px-4">3</td>--%>
+<%--                <td class="py-3 px-4">Full Stack Developer</td>--%>
+<%--                <td class="px-4 py-2 space-x-1">--%>
+<%--                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>--%>
+<%--                    <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded mt-1">Back End</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">10/10/2022</td>--%>
+<%--                <td class="py-3 px-4">10/11/2022</td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded">PENDING</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <button>--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">--%>
+<%--                    </button>--%>
+<%--                    <button class="open-modal text-red-500 hover:text-red-700">--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />--%>
+<%--                    </button>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
+<%--            <tr class="border-b">--%>
+<%--                <td class="py-3 px-4">4</td>--%>
+<%--                <td class="py-3 px-4">Solution Architect RikkeiSoft</td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">10/10/2022</td>--%>
+<%--                <td class="py-3 px-4">10/11/2022</td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded">HANDLING</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <button>--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">--%>
+<%--                    </button>--%>
+<%--                    <button class="open-modal text-red-500 hover:text-red-700">--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />--%>
+<%--                    </button>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
+<%--            <tr class="border-b">--%>
+<%--                <td class="py-3 px-4">5</td>--%>
+<%--                <td class="py-3 px-4">Project Manager LG</td>--%>
+<%--                <td class="px-4 py-2 space-x-1">--%>
+<%--                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>--%>
+<%--                    <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded mt-1">Back End</span>--%>
+<%--                </td>--%>
+
+<%--                <td class="py-3 px-4">10/10/2022</td>--%>
+<%--                <td class="py-3 px-4">10/11/2022</td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded">HANDLING</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <button>--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">--%>
+<%--                    </button>--%>
+<%--                    <button class="open-modal text-red-500 hover:text-red-700">--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />--%>
+<%--                    </button>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
+<%--            <tr class="border-b">--%>
+<%--                <td class="py-3 px-4">6</td>--%>
+<%--                <td class="py-3 px-4">Tech Lead Toyota</td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">10/10/2022</td>--%>
+<%--                <td class="py-3 px-4">10/11/2022</td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">INTERVIEWING</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <button>--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">--%>
+<%--                    </button>--%>
+<%--                    <button class="open-modal text-red-500 hover:text-red-700">--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />--%>
+<%--                    </button>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
+<%--            <tr class="border-b">--%>
+<%--                <td class="py-3 px-4">7</td>--%>
+<%--                <td class="py-3 px-4">Software Engineer Mobile</td>--%>
+<%--                <td class="px-4 py-2 space-x-1">--%>
+<%--                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>--%>
+<%--                    <span class="bg-orange-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded mt-1">Back End</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">10/10/2022</td>--%>
+<%--                <td class="py-3 px-4">10/11/2022</td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">INTERVIEWING</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <button>--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">--%>
+<%--                    </button>--%>
+<%--                    <button class="open-modal text-red-500 hover:text-red-700">--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />--%>
+<%--                    </button>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td class="py-3 px-4">8</td>--%>
+<%--                <td class="py-3 px-4">BrSE Yamaha</td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Front End</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">10/10/2022</td>--%>
+<%--                <td class="py-3 px-4">10/11/2022</td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">DONE</span>--%>
+<%--                </td>--%>
+<%--                <td class="py-3 px-4">--%>
+<%--                    <button>--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216145/Button_c2kv6s.png" alt="">--%>
+<%--                    </button>--%>
+<%--                    <button class="open-modal text-red-500 hover:text-red-700">--%>
+<%--                        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="Open Modal" />--%>
+<%--                    </button>--%>
+<%--                </td>--%>
+<%--            </tr>--%>
+<%--            </tbody>--%>
+<%--        </table>--%>
+<%--    </div>--%>
+
+<%--    <!-- Pagination -->--%>
+<%--    <div class="bg-white shadow-md p-4 flex justify-end items-center rounded-b-md">--%>
+<%--        <div class="flex space-x-2">--%>
+<%--            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">Prev</button>--%>
+<%--            <button class="px-3 py-1 bg-gray-200 text-gray-700">1</button>--%>
+<%--            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">2</button>--%>
+<%--            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">3</button>--%>
+<%--            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">4</button>--%>
+<%--            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">5</button>--%>
+<%--            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">6</button>--%>
+<%--            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">7</button>--%>
+<%--            <button class="px-3 py-1 text-gray-500 hover:text-gray-700">Next</button>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div><!-- Modal -->--%>
+<%--<!-- Modal -->--%>
+<%--<div id="approveModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">--%>
+<%--    <div class="bg-white p-6 rounded shadow-lg w-full max-w-md relative">--%>
+<%--        <button id="closeModal" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>--%>
+<%--        <h2 class="text-lg font-semibold mb-2">Approve Interview</h2>--%>
+<%--        <div class="space-y-2">--%>
+<%--            <p><strong>Created At:</strong> <span id="createdAt">10/10/2022</span></p>--%>
+<%--            <p><strong>Update At:</strong> <span id="updateAt">10/11/2022</span></p>--%>
+<%--            <p><strong>Interview Time:</strong> <span id="interviewTime">20/10/2022 10:10 AM</span></p>--%>
+<%--            <p><strong>Interview Link:</strong> <a href="#" id="interviewLink" class="text-blue-500 underline">Join Meeting</a></p>--%>
+<%--        </div>--%>
+<%--        <div class="flex justify-end mt-4 space-x-2">--%>
+<%--            <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300" id="cancelBtn">Cancel</button>--%>
+<%--            <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700" id="approveBtn">Approve</button>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<%--&lt;%&ndash;<style>&ndash;%&gt;--%>
+<%--&lt;%&ndash;    .modal {&ndash;%&gt;--%>
+<%--&lt;%&ndash;        display: none;&ndash;%&gt;--%>
+<%--&lt;%&ndash;        position: fixed;&ndash;%&gt;--%>
+<%--&lt;%&ndash;        top: 0;&ndash;%&gt;--%>
+<%--&lt;%&ndash;        left: 0;&ndash;%&gt;--%>
+<%--&lt;%&ndash;        width: 100%;&ndash;%&gt;--%>
+<%--&lt;%&ndash;        height: 100%;&ndash;%&gt;--%>
+<%--&lt;%&ndash;        background-color: rgba(0, 0, 0, 0.5);&ndash;%&gt;--%>
+<%--&lt;%&ndash;        justify-content: center;&ndash;%&gt;--%>
+<%--&lt;%&ndash;        align-items: center;&ndash;%&gt;--%>
+<%--&lt;%&ndash;    }&ndash;%&gt;--%>
+<%--&lt;%&ndash;    .modal-content {&ndash;%&gt;--%>
+<%--&lt;%&ndash;        background-color: white;&ndash;%&gt;--%>
+<%--&lt;%&ndash;        padding: 20px;&ndash;%&gt;--%>
+<%--&lt;%&ndash;        border-radius: 5px;&ndash;%&gt;--%>
+<%--&lt;%&ndash;        width: 300px;&ndash;%&gt;--%>
+<%--&lt;%&ndash;        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);&ndash;%&gt;--%>
+<%--&lt;%&ndash;        text-align: left;&ndash;%&gt;--%>
+<%--&lt;%&ndash;    }&ndash;%&gt;--%>
+<%--&lt;%&ndash;    .close {&ndash;%&gt;--%>
+<%--&lt;%&ndash;        float: right;&ndash;%&gt;--%>
+<%--&lt;%&ndash;        font-size: 24px;&ndash;%&gt;--%>
+<%--&lt;%&ndash;        cursor: pointer;&ndash;%&gt;--%>
+<%--&lt;%&ndash;    }&ndash;%&gt;--%>
+<%--&lt;%&ndash;</style>&ndash;%&gt;--%>
+<%--<script>--%>
+<%--    const modal = document.getElementById("approveModal");--%>
+<%--    const openBtns = document.querySelectorAll(".open-modal");--%>
+<%--    const closeModalBtn = document.getElementById("closeModal");--%>
+<%--    const cancelBtn = document.getElementById("cancelBtn");--%>
+
+<%--    openBtns.forEach(btn => {--%>
+<%--        btn.addEventListener("click", () => {--%>
+<%--            modal.classList.remove("hidden");--%>
+<%--        });--%>
+<%--    });--%>
+
+<%--    closeModalBtn.addEventListener("click", () => {--%>
+<%--        modal.classList.add("hidden");--%>
+<%--    });--%>
+
+<%--    cancelBtn.addEventListener("click", () => {--%>
+<%--        modal.classList.add("hidden");--%>
+<%--    });--%>
+<%--</script>--%>
+<%--</body>--%>
+<%--</html>--%>
 
 
 <%--<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>--%>
