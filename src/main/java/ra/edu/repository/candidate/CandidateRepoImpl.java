@@ -59,9 +59,16 @@ public class CandidateRepoImpl implements CandidateRepo {
                 hql += " AND c.gender = :gender";
             }
             if (age != null && !age.isEmpty()) {
-                if ("18-25".equals(age)) hql += " AND YEAR(c.dob) BETWEEN 2000 AND 2007";
-                else if ("26-35".equals(age)) hql += " AND YEAR(c.dob) BETWEEN 1990 AND 1999";
-                else if ("36+".equals(age)) hql += " AND YEAR(c.dob) <= 1989";
+                if ("18-22".equals(age)) {
+                    // Tính năm sinh cho độ tuổi 18-22 (giả sử năm hiện tại là 2025)
+                    hql += " AND YEAR(c.dob) BETWEEN 2003 AND 2007";
+                } else if ("22-26".equals(age)) {
+                    hql += " AND YEAR(c.dob) BETWEEN 1999 AND 2003";
+                } else if ("26-30".equals(age)) {
+                    hql += " AND YEAR(c.dob) BETWEEN 1995 AND 1999";
+                } else if ("30+".equals(age)) {
+                    hql += " AND YEAR(c.dob) <= 1995";
+                }
             }
             if (experience != null && !experience.isEmpty()) {
                 if ("4+".equals(experience)) hql += " AND c.experience >= 4";
@@ -131,4 +138,38 @@ public class CandidateRepoImpl implements CandidateRepo {
             session.close();
         }
     }
+
+    @Override
+    public Candidate findById(int id) {
+        Session session = sessionFactory.openSession();
+        try {
+            return session.get(Candidate.class, id);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public void save(Candidate candidate) {
+        Session session = sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            session.saveOrUpdate(candidate);
+            session.getTransaction().commit();
+        } finally {
+            session.close();
+        }
+    }
+    @Override
+    public Candidate findByEmail(String email) {
+        Session session = sessionFactory.openSession();
+        try {
+            return session.createQuery("FROM Candidate WHERE email = :email", Candidate.class)
+                    .setParameter("email", email)
+                    .uniqueResult();
+        } finally {
+            session.close();
+        }
+    }
 }
+

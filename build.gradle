@@ -66,6 +66,8 @@ dependencies {
     // bcrypt
     implementation 'org.mindrot:jbcrypt:0.4'
     implementation 'org.springframework.security:spring-security-core:5.8.5'
+    // để sử dụng DBCP (Database Connection Pooling)
+    implementation 'org.apache.commons:commons-dbcp2:2.9.0'
 
 
 }

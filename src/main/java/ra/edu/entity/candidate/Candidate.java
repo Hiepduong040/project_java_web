@@ -30,8 +30,8 @@ public class Candidate {
     @Column(length = 20)
     private String phone;
 
-    @Column(columnDefinition = "INT DEFAULT 0")
-    private int experience;
+    @Column(columnDefinition = "INT")
+    private Integer experience;
 
     @Column(length = 10)
     private String gender;
@@ -44,8 +44,9 @@ public class Candidate {
 
     private LocalDate dob;
 
-//    @OneToMany(mappedBy = "candidate", fetch = FetchType.LAZY)
-//    private List<CandidateTechnology> candidateTechnologies;
+    @Column(name = "remember_token")
+    private String rememberToken;
+
     // tai toan bo de tranh loi lazy-loader
     @OneToMany(mappedBy = "candidate", fetch = FetchType.EAGER)
     private List<CandidateTechnology> candidateTechnologies;

@@ -1,16 +1,21 @@
 package ra.edu.controller.auth;
 
 import lombok.RequiredArgsConstructor;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ra.edu.dto.auth.AuthDTO;
 import ra.edu.entity.auth.Admin;
+import ra.edu.entity.candidate.Candidate;
 import ra.edu.service.auth.AuthService;
+import ra.edu.service.candidate.CandidateService;
 
-import org.springframework.validation.BindingResult;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import javax.servlet.http.*;
 import java.util.UUID;
 
 @Controller
@@ -18,17 +23,18 @@ import java.util.UUID;
 public class AuthController {
 
     private final AuthService authService;
+    private final CandidateService candidateService;
 
-    @GetMapping("/admin_login")
+    @GetMapping("/login")
     public String loginForm(Model model,
-                            @CookieValue(value = "rememberEmailAdmin", defaultValue = "") String email) {
+                            @CookieValue(value = "rememberEmail", defaultValue = "") String email) {
         AuthDTO authDTO = new AuthDTO();
-        authDTO.setEmail(email); // Đặt sẵn email nếu đã lưu trong cookie
+        authDTO.setEmail(email);
         model.addAttribute("auth", authDTO);
         return "auth/admin_login";
     }
 
-    @PostMapping("/admin_login")
+    @PostMapping("/login")
     public String login(
             @ModelAttribute("auth") @Valid AuthDTO authDTO,
             BindingResult bindingResult,
@@ -41,65 +47,120 @@ public class AuthController {
             return "auth/admin_login";
         }
 
+        // Kiểm tra trong bảng admin
         Admin admin = authService.login(authDTO.getEmail(), authDTO.getPassword());
-        if (admin == null) {
-            model.addAttribute("error", "Invalid email or password");
-            return "auth/admin_login";
+        if (admin != null) {
+            if ("on".equals(rememberMe)) {
+                String token = UUID.randomUUID().toString();
+                admin.setRememberToken(token);
+                authService.saveOrUpdate(admin);
+
+                Cookie tokenCookie = new Cookie("remember_token", token);
+                tokenCookie.setMaxAge(7 * 24 * 60 * 60);
+                tokenCookie.setPath("/");
+                tokenCookie.setHttpOnly(true);
+                tokenCookie.setSecure(true);
+                response.addCookie(tokenCookie);
+            }
+
+            Cookie emailCookie = new Cookie("rememberEmail", authDTO.getEmail());
+            emailCookie.setMaxAge("on".equals(rememberMe) ? 7 * 24 * 60 * 60 : 0);
+            emailCookie.setPath("/");
+            emailCookie.setHttpOnly(true);
+            emailCookie.setSecure(true);
+            response.addCookie(emailCookie);
+
+            return "redirect:/admin/dashboard";
         }
 
-        // Tạo session mới
-        HttpSession session = request.getSession();
-        session.setAttribute("admin", admin);
-
-        // Ghi nhớ email vào cookie (UI tiện lợi)
-        Cookie emailCookie = new Cookie("rememberEmailAdmin", authDTO.getEmail());
-        emailCookie.setMaxAge("on".equals(rememberMe) ? 7 * 24 * 60 * 60 : 0);
-        emailCookie.setPath("/");
-        response.addCookie(emailCookie);
-
-        // ✅ Thêm: Tạo remember_token nếu chọn ghi nhớ đăng nhập
-        if ("on".equals(rememberMe)) {
+        // Kiểm tra trong bảng candidate
+        Candidate candidate = candidateService.findByEmailAndPassword(authDTO.getEmail(), authDTO.getPassword());
+        if (candidate != null) {
+            // Tạo token và lưu vào cookies
             String token = UUID.randomUUID().toString();
-            admin.setRememberToken(token);
-            authService.saveOrUpdate(admin); // Cập nhật token vào DB
 
+            // Lưu token vào database
+            candidate.setRememberToken(token);
+            candidateService.saveOrUpdate(candidate);
+
+            // Tạo cookies
             Cookie tokenCookie = new Cookie("remember_token", token);
-            tokenCookie.setMaxAge(7 * 24 * 60 * 60);
+            tokenCookie.setMaxAge("on".equals(rememberMe) ? 7 * 24 * 60 * 60 : -1); // -1: session cookie
             tokenCookie.setPath("/");
+            tokenCookie.setHttpOnly(true);
+            tokenCookie.setSecure(true);
             response.addCookie(tokenCookie);
+
+            Cookie emailCookie = new Cookie("rememberEmail", candidate.getEmail());
+            emailCookie.setMaxAge("on".equals(rememberMe) ? 7 * 24 * 60 * 60 : -1);
+            emailCookie.setPath("/");
+            response.addCookie(emailCookie);
+
+            Cookie nameCookie = new Cookie("userName", candidate.getName());
+            nameCookie.setMaxAge("on".equals(rememberMe) ? 7 * 24 * 60 * 60 : -1);
+            nameCookie.setPath("/");
+            response.addCookie(nameCookie);
+
+            return "redirect:/home";
         }
 
-        return "redirect:/admin/dashboard";
+        model.addAttribute("error", "Email hoặc mật khẩu không đúng");
+        return "auth/admin_login";
+    }
+    @GetMapping("/home")
+    public String getHomePage(
+            @CookieValue(value = "rememberEmail", defaultValue = "") String email,
+            @CookieValue(value = "remember_token", defaultValue = "") String token,
+            Model model) {
+
+        if (!email.isEmpty() && !token.isEmpty()) {
+            Candidate candidate = candidateService.findByEmailAndToken(email, token);
+            if (candidate != null) {
+                model.addAttribute("userName", candidate.getName());
+                return "candidate/home";
+            }
+        }
+
+        model.addAttribute("userName", null);
+        return "candidate/home";
     }
 
     @GetMapping("/logout")
-    public String logout(HttpSession session,
-                         HttpServletRequest request,
-                         HttpServletResponse response) {
-        Admin admin = (Admin) session.getAttribute("admin");
-
-        // ✅ Nếu đã đăng nhập, xóa token khỏi DB
-        if (admin != null) {
-            admin.setRememberToken(null);
-            authService.saveOrUpdate(admin);
-        }
-
-        session.invalidate();
-
-        // Xóa các cookie
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        // Xóa thông tin remember token từ database nếu có
         Cookie[] cookies = request.getCookies();
+        String email = null;
+        String token = null;
+
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if ("rememberEmailAdmin".equals(cookie.getName())
-                        || "remember_token".equals(cookie.getName())) {
-                    cookie.setValue(null);
-                    cookie.setMaxAge(0);
-                    cookie.setPath("/");
-                    response.addCookie(cookie);
+                if ("rememberEmail".equals(cookie.getName())) {
+                    email = cookie.getValue();
+                } else if ("remember_token".equals(cookie.getName())) {
+                    token = cookie.getValue();
                 }
             }
         }
 
-        return "redirect:/admin_login";
+        if (email != null && token != null) {
+            Candidate candidate = candidateService.findByEmailAndToken(email, token);
+            if (candidate != null) {
+                candidate.setRememberToken(null);
+                candidateService.saveOrUpdate(candidate);
+            }
+        }
+
+        // Xóa tất cả cookies liên quan
+        String[] cookieNames = {"rememberEmail", "remember_token", "userName"};
+        for (String cookieName : cookieNames) {
+            Cookie cookie = new Cookie(cookieName, null);
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+        }
+
+        return "redirect:/login";
     }
 }
+
+

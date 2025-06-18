@@ -1,0 +1,319 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="vi" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8" />-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+<!--    <title>InternSHIP</title>-->
+<!--    <script src="https://cdn.tailwindcss.com"></script>-->
+<!--</head>-->
+<!--<body class="font-sans bg-white text-gray-800">-->
+
+<!--&lt;!&ndash; Navbar &ndash;&gt;-->
+<!--<header class="flex justify-between items-center px-10 py-4 border-b bg-gray-800 text-white">-->
+<!--    <h1 class="text-xl font-bold">Intern <span class="text-red-600">SHIP</span></h1>-->
+
+<!--    &lt;!&ndash; Dropdown Menu for logged-in users &ndash;&gt;-->
+<!--    <div th:if="${isLoggedIn}" class="relative group">-->
+<!--        &lt;!&ndash; Nút hiển thị tên người dùng &ndash;&gt;-->
+<!--        <button class="flex items-center space-x-2 hover:text-red-300 focus:outline-none">-->
+<!--            <span th:text="${userName}"></span>-->
+<!--            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"-->
+<!--                 xmlns="http://www.w3.org/2000/svg">-->
+<!--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+<!--                      d="M19 9l-7 7-7-7"></path>-->
+<!--            </svg>-->
+<!--        </button>-->
+
+<!--        &lt;!&ndash; Dropdown menu &ndash;&gt;-->
+<!--        <div-->
+<!--                class="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-lg-->
+<!--               opacity-0 group-hover:opacity-100 transform -translate-y-2-->
+<!--               group-hover:translate-y-0 transition-all duration-500-->
+<!--               invisible group-hover:visible z-10">-->
+<!--            <a th:href="@{/information}" class="block px-4 py-2 hover:bg-gray-100">Thông tin</a>-->
+<!--            <a th:href="@{/my-application}" class="block px-4 py-2 hover:bg-gray-100">Đơn ứng tuyển của tôi</a>-->
+<!--            <a th:href="@{/logout}" class="block px-4 py-2 text-red-600 hover:bg-gray-100">Đăng xuất</a>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Fallback for non-logged-in users &ndash;&gt;-->
+<!--    <div th:unless="${isLoggedIn}">-->
+<!--        <a th:href="@{/login}" class="bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800 mr-4">Đăng nhập</a>-->
+<!--        <a th:href="@{/candidate/register}" class="bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800">Đăng ký</a>-->
+<!--    </div>-->
+<!--</header>-->
+
+<!--&lt;!&ndash; Banner &ndash;&gt;-->
+<!--<section class="relative bg-cover bg-center h-[500px]" style="background-image: url('https://res.cloudinary.com/dmghszorv/image/upload/v1750085544/image_2_x17spq.png');">-->
+<!--    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center px-24 text-white">-->
+<!--        <h2 class="text-5xl font-bold mb-2">Intern <span class="text-red-500">SHIP</span></h2>-->
+<!--        <p class="text-lg font-semibold">Trải nghiệm thực tế, bứt phá tiềm năng công nghệ</p>-->
+<!--        <p class="mt-2 max-w-xl">Tham gia chương trình thực tập để học hỏi từ các chuyên gia, nâng cao kỹ năng thực hành và chuẩn bị cho tương lai nghề nghiệp tươi sáng.</p>-->
+
+<!--        &lt;!&ndash; Search box &ndash;&gt;-->
+<!--        <div class="bg-white p-4 mt-6 rounded-lg w-full max-w-2xl shadow flex gap-4">-->
+<!--            <select class="w-1/3 border border-gray-300 rounded px-3 py-2 text-sm">-->
+<!--                <option>Chọn thành phố</option>-->
+<!--            </select>-->
+<!--            <input type="text" class="w-2/3 border border-gray-300 rounded px-3 py-2 text-sm" placeholder="Nhập vị trí thực tập, từ khóa công ty...">-->
+<!--            <button class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700">Tìm kiếm</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--&lt;!&ndash; Best position &ndash;&gt;-->
+<!--<section class="px-24 py-10">-->
+<!--    <div class="flex justify-between items-center mb-6">-->
+<!--        <h3 class="text-xl font-bold text-red-600">Vị trí <span class="text-gray-900">tốt nhất cho bạn</span></h3>-->
+<!--        <a href="#" class="text-sm text-gray-700 hover:underline">Xem chi tiết</a>-->
+<!--    </div>-->
+<!--    <div class="grid grid-cols-3 gap-4">-->
+<!--        &lt;!&ndash; Position Card &ndash;&gt;-->
+<!--        &lt;!&ndash; Highlighted card &ndash;&gt;-->
+<!--        <div class="border-2 border-red-500 p-4 rounded hover:shadow-md">-->
+<!--            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750086857/Frame_5_1_imt1q4.png" alt="Front End Developer">-->
+<!--            <h4 class="mt-2 font-semibold">Front End Developer</h4>-->
+<!--            <div class="flex gap-2 text-sm text-gray-600 mt-1">-->
+<!--                <span>ReactJS</span><span>Java</span>-->
+<!--                <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750087961/Arrow_outward_p3i14q.png" class="w-4 h-4" />-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Other cards &ndash;&gt;-->
+<!--        <div class="border p-4 rounded hover:shadow-md">-->
+<!--            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750086810/Frame_5_epvny2.png" alt="Front End Developer">-->
+<!--            <h4 class="mt-2 font-semibold">Front End Developer</h4>-->
+<!--            <div class="flex gap-2 text-sm text-gray-600 mt-1">-->
+<!--                <span>ReactJS</span><span>Java</span>-->
+<!--                <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750087961/Arrow_outward_p3i14q.png" class="w-4 h-4" />-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Repeat 7 more cards... (you can use a loop with Thymeleaf if data is dynamic) &ndash;&gt;-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--&lt;!&ndash; Top Recruiter &ndash;&gt;-->
+<!--<section class="px-24 py-10">-->
+<!--    <h2 class="text-2xl font-bold text-red-600 mt-8 mb-4">Nhà tuyển dụng hàng đầu</h2>-->
+<!--    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">-->
+<!--        <div class="border p-4 rounded shadow text-center">-->
+<!--            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750087079/image_4_gwhveo.png" class="mx-auto h-10">-->
+<!--            <p class="mt-2">Rikasoft</p>-->
+<!--            <p class="text-sm text-gray-500">4 vị trí thực tập</p>-->
+<!--        </div>-->
+<!--        <div class="border p-4 rounded shadow text-center">-->
+<!--            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750087079/image_3_eje3gp.png" class="mx-auto h-10">-->
+<!--            <p class="mt-2">Rikkeisoft</p>-->
+<!--            <p class="text-sm text-gray-500">4 vị trí thực tập</p>-->
+<!--        </div>-->
+<!--        <div class="border p-4 rounded shadow text-center">-->
+<!--            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750087079/image_5_jvqm3k.png" class="mx-auto h-10">-->
+<!--            <p class="mt-2">Rikasoft</p>-->
+<!--            <p class="text-sm text-gray-500">4 vị trí thực tập</p>-->
+<!--        </div>-->
+<!--        <div class="border p-4 rounded shadow text-center">-->
+<!--            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750087079/image_6_ayideo.png" class="mx-auto h-10">-->
+<!--            <p class="mt-2">Rikasoft</p>-->
+<!--            <p class="text-sm text-gray-500">4 vị trí thực tập</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<footer class="bg-gray-100 px-24 py-10 text-sm text-gray-600">-->
+<!--    <div class="flex flex-wrap justify-between gap-8">-->
+<!--        &lt;!&ndash; Contact &ndash;&gt;-->
+<!--        <div>-->
+<!--            <p class="font-semibold mb-2">THÔNG TIN LIÊN HỆ</p>-->
+<!--            <p>Trụ sở Hà Nội</p>-->
+<!--            <p>Tầng 7, Tòa nhà A Sông Đà, Đường Phạm Hùng, Phường Mỹ Đình 1, Hà Nội</p>-->
+<!--            <p>Điện thoại: 0862 069 233</p>-->
+<!--            <p>Email: academy@rikkeisoft.com</p>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Links &ndash;&gt;-->
+<!--        <div>-->
+<!--            <p class="font-semibold mb-2">LIÊN KẾT NHANH</p>-->
+<!--            <ul class="list-disc pl-4">-->
+<!--                <li>Tổng quan</li>-->
+<!--                <li>Vị trí thực tập</li>-->
+<!--                <li>Đơn ứng tuyển thực tập</li>-->
+<!--                <li>Nhiệm vụ của tôi</li>-->
+<!--            </ul>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Branches &ndash;&gt;-->
+<!--        <div>-->
+<!--            <p class="font-semibold mb-2">DANH SÁCH CHI NHÁNH</p>-->
+<!--            <p><strong>Chi nhánh 1</strong>: Tầng 7, Tòa nhà A, Tòa nhà Sông Đà, Đường Phạm Hùng, Hà Nội</p>-->
+<!--            <p>Điện thoại: 0862 069 233</p>-->
+<!--            <p class="mt-2"><strong>Chi nhánh 2</strong>: Tầng 3, Tòa nhà TSA, Số 77 Đường Lê Trung Nghĩa, TP.HCM</p>-->
+<!--            <p>Điện thoại: 0962 703 893</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <p class="mt-6 text-center text-xs">Tổ chức Giáo dục Quốc tế và Phát triển Nguồn Nhân lực - Rikkei Education</p>-->
+<!--</footer>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>InternSHIP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans bg-white text-gray-800">
+
+<!-- Navbar -->
+<header class="flex justify-between items-center px-10 py-4 border-b bg-gray-800 text-white">
+    <h1 class="text-xl font-bold">Intern <span class="text-red-600">SHIP</span></h1>
+
+    <!-- Dropdown Menu -->
+    <div th:if="${userName != null}" class="relative group">
+        <!-- Nút bấm hiển thị tên người dùng -->
+        <button class="flex items-center space-x-2 hover:text-red-300 focus:outline-none">
+            <span th:text="${userName}"></span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+
+        <!-- Dropdown menu -->
+        <div
+                class="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-lg
+               opacity-0 group-hover:opacity-100 transform -translate-y-2
+               group-hover:translate-y-0 transition-all duration-500
+               invisible group-hover:visible z-10">
+            <a th:href="@{/information}" class="block px-4 py-2 hover:bg-gray-100">Thông tin</a>
+            <a th:href="@{/my-application}" class="block px-4 py-2 hover:bg-gray-100">Đơn ứng tuyển của tôi</a>
+            <a th:href="@{/logout}" class="block px-4 py-2 text-red-600 hover:bg-gray-100">Đăng xuất</a>
+        </div>
+    </div>
+
+
+    <!-- Fallback for non-logged-in users -->
+    <div th:unless="${userName != null}">
+        <a href="/login" class="bg-red-700 text-white px-4 py-2 rounded hover:bg-red-800">Sign in / Sign up</a>
+    </div>
+</header>
+
+<!-- Banner -->
+<section class="relative bg-cover bg-center h-[500px]" style="background-image: url('https://res.cloudinary.com/dmghszorv/image/upload/v1750085544/image_2_x17spq.png');">
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center px-24 text-white">
+        <h2 class="text-5xl font-bold mb-2">Intern <span class="text-red-500">SHIP</span></h2>
+        <p class="text-lg font-semibold">Practical experience, breakthrough technology potential</p>
+        <p class="mt-2 max-w-xl">Join the internship program to learn from experts, sharpen your practical skills, and prepare for a bright future career.</p>
+
+        <!-- Search box -->
+        <div class="bg-white p-4 mt-6 rounded-lg w-full max-w-2xl shadow flex gap-4">
+            <select class="w-1/3 border border-gray-300 rounded px-3 py-2 text-sm">
+                <option>Select your city</option>
+            </select>
+            <input type="text" class="w-2/3 border border-gray-300 rounded px-3 py-2 text-sm" placeholder="Enter internship position, company keyword...">
+            <button class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700">Search</button>
+        </div>
+    </div>
+</section>
+
+<!-- Best position -->
+<section class="px-24 py-10">
+    <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-bold text-red-600">The best position <span class="text-gray-900">for you</span></h3>
+        <a href="#" class="text-sm text-gray-700 hover:underline">Xem chi tiết</a>
+    </div>
+    <div class="grid grid-cols-3 gap-4">
+        <!-- Position Card -->
+        <!-- Highlighted card -->
+        <div class="border-2 border-red-500 p-4 rounded hover:shadow-md">
+            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750086857/Frame_5_1_imt1q4.png" alt="Front End Developer">
+            <h4 class="mt-2 font-semibold">Front End Developer</h4>
+            <div class="flex gap-2 text-sm text-gray-600 mt-1">
+                <span>ReactJS</span><span>Java</span>
+                <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750087961/Arrow_outward_p3i14q.png" class="w-4 h-4" />
+            </div>
+        </div>
+
+        <!-- Other cards -->
+        <div class="border p-4 rounded hover:shadow-md">
+            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750086810/Frame_5_epvny2.png" alt="Front End Developer">
+            <h4 class="mt-2 font-semibold">Front End Developer</h4>
+            <div class="flex gap-2 text-sm text-gray-600 mt-1">
+                <span>ReactJS</span><span>Java</span>
+                <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750087961/Arrow_outward_p3i14q.png" class="w-4 h-4" />
+            </div>
+        </div>
+        <!-- Repeat 7 more cards... (you can use a loop with Thymeleaf if data is dynamic) -->
+    </div>
+</section>
+
+<!-- Top Recruiter -->
+<section class="px-24 py-10">
+    <h2 class="text-2xl font-bold text-red-600 mt-8 mb-4">Top recruiter</h2>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div class="border p-4 rounded shadow text-center">
+            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750087079/image_4_gwhveo.png" class="mx-auto h-10">
+            <p class="mt-2">Rikasoft</p>
+            <p class="text-sm text-gray-500">4 internship position</p>
+        </div>
+        <div class="border p-4 rounded shadow text-center">
+            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750087079/image_3_eje3gp.png" class="mx-auto h-10">
+            <p class="mt-2">Rikkeisoft</p>
+            <p class="text-sm text-gray-500">4 internship position</p>
+        </div>
+        <div class="border p-4 rounded shadow text-center">
+            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750087079/image_5_jvqm3k.png" class="mx-auto h-10">
+            <p class="mt-2">Rikasoft</p>
+            <p class="text-sm text-gray-500">4 internship position</p>
+        </div>
+        <div class="border p-4 rounded shadow text-center">
+            <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750087079/image_6_ayideo.png" class="mx-auto h-10">
+            <p class="mt-2">Rikasoft</p>
+            <p class="text-sm text-gray-500">4 internship position</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-100 px-24 py-10 text-sm text-gray-600">
+    <div class="flex flex-wrap justify-between gap-8">
+        <!-- Contact -->
+        <div>
+            <p class="font-semibold mb-2">THÔNG TIN LIÊN HỆ</p>
+            <p>Trụ sở Hà Nội</p>
+            <p>Tầng 7, Tòa nhà A Sông Đà, Đường Phạm Hùng, Phường Mỹ Đình 1, Hà Nội</p>
+            <p>Điện thoại: 0862 069 233</p>
+            <p>Email: academy@rikkeisoft.com</p>
+        </div>
+
+        <!-- Links -->
+        <div>
+            <p class="font-semibold mb-2">LIÊN KẾT NHANH</p>
+            <ul class="list-disc pl-4">
+                <li>Tổng quan</li>
+                <li>Vị trí thực tập</li>
+                <li>Đơn ứng tuyển thực tập</li>
+                <li>Nhiệm vụ của tôi</li>
+            </ul>
+        </div>
+
+        <!-- Branches -->
+        <div>
+            <p class="font-semibold mb-2">DANH SÁCH CHI NHÁNH</p>
+            <p><strong>Chi nhánh 1</strong>: Tầng 7, Tòa nhà A, Tòa nhà Sông Đà, Đường Phạm Hùng, Hà Nội</p>
+            <p>Điện thoại: 0862 069 233</p>
+            <p class="mt-2"><strong>Chi nhánh 2</strong>: Tầng 3, Tòa nhà TSA, Số 77 Đường Lê Trung Nghĩa, TP.HCM</p>
+            <p>Điện thoại: 0962 703 893</p>
+        </div>
+    </div>
+    <p class="mt-6 text-center text-xs">Tổ chức Giáo dục Quốc tế và Phát triển Nguồn Nhân lực - Rikkei Education</p>
+</footer>
+
+</body>
+</html>

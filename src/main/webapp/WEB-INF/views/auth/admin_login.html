@@ -1,5 +1,127 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Sign In</title>-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    &lt;!&ndash; Bootstrap 5 CDN &ndash;&gt;-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <style>-->
+<!--        body {-->
+<!--            background-color: #fff;-->
+<!--            height: 100vh;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            font-family: Arial, sans-serif;-->
+<!--        }-->
+
+<!--        .login-container {-->
+<!--            width: 100%;-->
+<!--            max-width: 400px;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        .login-title {-->
+<!--            font-size: 2.5rem; /* To hơn */-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .login-title span {-->
+<!--            color: #b11f1f;-->
+<!--        }-->
+
+<!--        .subtitle {-->
+<!--            font-size: 1.25rem; /* To hơn */-->
+<!--            color: #333;-->
+<!--            margin-bottom: 1.5rem;-->
+<!--        }-->
+
+<!--        .form-control {-->
+<!--            border-radius: 8px;-->
+<!--            padding: 10px 15px;-->
+<!--            background-color: #f2f2f2; /* Màu xám nhạt */-->
+<!--            border: 1px solid #ccc;-->
+<!--        }-->
+
+<!--        .btn-login {-->
+<!--            background-color: #a61b1b;-->
+<!--            color: #fff;-->
+<!--            border-radius: 6px;-->
+<!--        }-->
+
+<!--        .btn-login:hover {-->
+<!--            background-color: #911717;-->
+<!--        }-->
+
+<!--        .form-check-label, .small-text {-->
+<!--            font-size: 0.9rem;-->
+<!--        }-->
+
+<!--        .footer {-->
+<!--            font-size: 0.85rem;-->
+<!--            color: #777;-->
+<!--            margin-top: 20px;-->
+<!--        }-->
+
+<!--        .click-here {-->
+<!--            color: #b11f1f;-->
+<!--            font-weight: 500;-->
+<!--            text-decoration: none;-->
+<!--        }-->
+
+<!--        .click-here:hover {-->
+<!--            text-decoration: underline;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="login-container">-->
+<!--    <div class="login-title">-->
+<!--        My <span>Company</span>-->
+<!--    </div>-->
+<!--    <p class="subtitle">Please sign in</p>-->
+<!--    <form th:action="@{/admin_login}" th:object="${auth}" method="post">-->
+<!--    <div class="mb-3">-->
+<!--            <input type="email" th:field="*{email}" class="form-control" placeholder="Enter email">-->
+<!--            <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>-->
+<!--        </div>-->
+<!--        <div class="mb-3">-->
+<!--            <input type="password" th:field="*{password}" class="form-control" placeholder="Enter password">-->
+<!--            <div class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>-->
+<!--        </div>-->
+<!--        <div class="d-flex justify-content-between align-items-center mb-3">-->
+<!--            <div class="form-check">-->
+<!--                <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe" value="on">-->
+
+<!--                <label class="form-check-label" for="rememberMe">-->
+<!--                    Remember me-->
+<!--                </label>-->
+<!--            </div>-->
+<!--            <div class="small-text">-->
+<!--                Don't have an account, <a href="#" class="click-here">click here !</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div th:if="${error}" class="text-danger mt-2">-->
+<!--            <p th:text="${error}"></p>-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn btn-login w-100">Sign in</button>-->
+<!--    </form>-->
+
+
+<!--    <div class="footer mt-4">© 2025 - Rikkei Education-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Bootstrap JS (optional) &ndash;&gt;-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Sign In</title>
@@ -23,7 +145,7 @@
         }
 
         .login-title {
-            font-size: 2.5rem; /* To hơn */
+            font-size: 2.5rem;
             font-weight: bold;
         }
 
@@ -32,7 +154,7 @@
         }
 
         .subtitle {
-            font-size: 1.25rem; /* To hơn */
+            font-size: 1.25rem;
             color: #333;
             margin-bottom: 1.5rem;
         }
@@ -40,7 +162,7 @@
         .form-control {
             border-radius: 8px;
             padding: 10px 15px;
-            background-color: #f2f2f2; /* Màu xám nhạt */
+            background-color: #f2f2f2;
             border: 1px solid #ccc;
         }
 
@@ -81,8 +203,8 @@
         My <span>Company</span>
     </div>
     <p class="subtitle">Please sign in</p>
-    <form th:action="@{/admin_login}" th:object="${auth}" method="post">
-    <div class="mb-3">
+    <form th:action="@{/login}" th:object="${auth}" method="post">
+        <div class="mb-3">
             <input type="email" th:field="*{email}" class="form-control" placeholder="Enter email">
             <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
         </div>
@@ -93,13 +215,12 @@
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe" value="on">
-
                 <label class="form-check-label" for="rememberMe">
                     Remember me
                 </label>
             </div>
             <div class="small-text">
-                Don't have an account, <a href="#" class="click-here">click here !</a>
+                Don't have an account? <a th:href="@{/candidate/register}" class="click-here">Click here!</a>
             </div>
         </div>
         <div th:if="${error}" class="text-danger mt-2">
@@ -107,10 +228,7 @@
         </div>
         <button type="submit" class="btn btn-login w-100">Sign in</button>
     </form>
-
-
-    <div class="footer mt-4">© 2025 - Rikkei Education
-    </div>
+    <div class="footer mt-4">© 2025 - Rikkei Education</div>
 </div>
 
 <!-- Bootstrap JS (optional) -->

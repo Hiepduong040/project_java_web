@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - InternSHIP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex bg-white">
+<!-- Left: Form -->
+<div class="w-1/2 flex flex-col justify-center items-center px-24">
+    <h2 class="text-3xl font-extrabold mb-1">
+        Intern <span class="text-red-600">SHIP</span>
+    </h2>
+    <p class="mb-8 text-gray-600 text-sm">Please sign up</p>
+
+    <form th:action="@{/candidate/register}" method="post" th:object="${candidate}" class="w-full max-w-sm space-y-4">
+        <div>
+            <input type="text" th:field="*{name}" placeholder="Please enter your name ..."
+                   class="w-full px-4 py-2 border rounded outline-none focus:ring-2 focus:ring-red-500"
+                   th:classappend="${#fields.hasErrors('name')} ? 'border-red-500' : 'border-gray-300'" />
+            <p th:if="${#fields.hasErrors('name')}" class="text-sm text-red-500 mt-1" th:errors="*{name}">Please enter your name ...</p>
+        </div>
+        <div>
+            <input type="email" th:field="*{email}" placeholder="Please enter your email ..."
+                   class="w-full px-4 py-2 border rounded outline-none focus:ring-2 focus:ring-red-500"
+                   th:classappend="${#fields.hasErrors('email')} ? 'border-red-500' : 'border-gray-300'" />
+            <p th:if="${#fields.hasErrors('email')}" class="text-sm text-red-500 mt-1" th:errors="*{email}">Please enter your email ...</p>
+        </div>
+        <div>
+            <input type="password" th:field="*{password}" placeholder="Please enter your password ..."
+                   class="w-full px-4 py-2 border rounded outline-none focus:ring-2 focus:ring-red-500"
+                   th:classappend="${#fields.hasErrors('password')} ? 'border-red-500' : 'border-gray-300'" />
+            <p th:if="${#fields.hasErrors('password')}" class="text-sm text-red-500 mt-1" th:errors="*{password}">Please enter your password ...</p>
+        </div>
+        <div>
+            <input type="password" th:field="*{confirmPassword}" placeholder="Please enter your confirm password ..."
+                   class="w-full px-4 py-2 border rounded outline-none focus:ring-2 focus:ring-red-500"
+                   th:classappend="${#fields.hasErrors('confirmPassword')} ? 'border-red-500' : 'border-gray-300'" />
+            <p th:if="${#fields.hasErrors('confirmPassword')}" class="text-sm text-red-500 mt-1" th:errors="*{confirmPassword}">Please enter your confirm password ...</p>
+            <p th:if="${error != null and not #fields.hasErrors('confirmPassword')}" class="text-sm text-red-500 mt-1" th:text="${error}"></p>
+        </div>
+
+        <div class="text-sm text-center">
+            Have an account? <a th:href="@{/login}" class="text-red-600 hover:underline">Click here!</a>
+        </div>
+
+        <button type="submit"
+                class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition duration-200">
+            Sign up
+        </button>
+        <p class="text-xs text-gray-500 text-center mt-4">© 2025 - Rikkei Education</p>
+    </form>
+</div>
+
+<!-- Right: Image -->
+<div class="w-1/2 flex justify-center items-center bg-gray-50">
+    <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750058582/image_1_fhxwlq.png"
+         alt="InternSHIP Illustration" class="w-4/5 max-w-lg">
+</div>
+</body>
+</html>
