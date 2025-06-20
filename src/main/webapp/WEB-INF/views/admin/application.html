@@ -1,0 +1,606 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Application Management</title>-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">-->
+<!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">-->
+<!--  <style>-->
+<!--    :root {-->
+<!--      &#45;&#45;sidebar-width: 280px;-->
+<!--      &#45;&#45;primary-color: #0d6efd;-->
+<!--      &#45;&#45;bg-color: #f8f9fa;-->
+<!--      &#45;&#45;text-color: #333;-->
+<!--      &#45;&#45;border-color: #eee;-->
+<!--      &#45;&#45;error-color: #dc3545;-->
+<!--    }-->
+
+<!--    body {-->
+<!--      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;-->
+<!--      background-color: var(&#45;&#45;bg-color);-->
+<!--      margin: 0;-->
+<!--      display: flex;-->
+<!--    }-->
+
+<!--    .sidebar {-->
+<!--      width: var(&#45;&#45;sidebar-width);-->
+<!--      height: 100vh;-->
+<!--      position: fixed;-->
+<!--      background-color: white;-->
+<!--      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--      padding: 20px;-->
+<!--      display: flex;-->
+<!--      flex-direction: column;-->
+<!--      justify-content: space-between;-->
+<!--    }-->
+
+<!--    .nav-link:hover {-->
+<!--      background-color: #f0f7ff;-->
+<!--      color: #0d6efd;-->
+<!--    }-->
+
+<!--    .nav-link.active {-->
+<!--      background-color: #e9ecef;-->
+<!--      color: #0d6efd;-->
+<!--      font-weight: 500;-->
+<!--    }-->
+
+<!--    .main-content {-->
+<!--      margin-left: var(&#45;&#45;sidebar-width);-->
+<!--      padding: 20px;-->
+<!--      width: calc(100% - var(&#45;&#45;sidebar-width));-->
+<!--    }-->
+
+<!--    .table th {-->
+<!--      border-top: none;-->
+<!--      font-weight: 600;-->
+<!--      color: #6c757d;-->
+<!--    }-->
+
+<!--    .status {-->
+<!--      padding: 4px 10px;-->
+<!--      border-radius: 5px;-->
+<!--      font-weight: 500;-->
+<!--      font-size: 0.875rem;-->
+<!--      text-transform: uppercase;-->
+<!--    }-->
+
+<!--    .status-pending {-->
+<!--      background-color: #ffe8a1;-->
+<!--      color: #856404;-->
+<!--    }-->
+
+<!--    .status-handling {-->
+<!--      background-color: #e0d7ff;-->
+<!--      color: #4e00b3;-->
+<!--    }-->
+
+<!--    .status-interviewing {-->
+<!--      background-color: #b8ecff;-->
+<!--      color: #004085;-->
+<!--    }-->
+
+<!--    .status-done {-->
+<!--      background-color: #d4edda;-->
+<!--      color: #155724;-->
+<!--    }-->
+
+<!--    .edit-icon, .delete-icon {-->
+<!--      text-decoration: none;-->
+<!--      font-size: 1rem;-->
+<!--      margin-right: 8px;-->
+<!--      color: #6c757d;-->
+<!--      cursor: pointer;-->
+<!--    }-->
+
+<!--    .edit-icon:hover {-->
+<!--      color: #198754;-->
+<!--    }-->
+
+<!--    .delete-icon:hover {-->
+<!--      color: var(&#45;&#45;error-color);-->
+<!--    }-->
+
+<!--    .pagination {-->
+<!--      display: flex;-->
+<!--      justify-content: center;-->
+<!--      gap: 5px;-->
+<!--      margin-top: 20px;-->
+<!--    }-->
+
+<!--    .pagination a, .pagination span {-->
+<!--      padding: 8px 12px;-->
+<!--      border: 1px solid #ddd;-->
+<!--      border-radius: 5px;-->
+<!--      background-color: #fff;-->
+<!--      text-decoration: none;-->
+<!--      color: #333;-->
+<!--    }-->
+
+<!--    .pagination .active {-->
+<!--      background-color: #dc3545;-->
+<!--      color: #fff;-->
+<!--      border-color: #dc3545;-->
+<!--    }-->
+
+<!--    .pagination a:hover {-->
+<!--      background-color: var(&#45;&#45;primary-color);-->
+<!--      color: #fff;-->
+<!--    }-->
+<!--  </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash; Sidebar sử dụng Thymeleaf fragment &ndash;&gt;-->
+<!--<div th:insert="fragments/sidebar_admin::SIDEBAR_ADMIN"></div>-->
+
+<!--&lt;!&ndash; Main content &ndash;&gt;-->
+<!--<div class="main-content">-->
+<!--  <h4><i class="fas fa-table"></i> Application</h4>-->
+
+<!--  <div class="d-flex justify-content-between align-items-center mb-3">-->
+<!--    <div>-->
+<!--      <select class="form-select" style="width: 150px;">-->
+<!--        <option selected>Process</option>-->
+<!--        <option value="PENDING">PENDING</option>-->
+<!--        <option value="HANDLING">HANDLING</option>-->
+<!--        <option value="INTERVIEWING">INTERVIEWING</option>-->
+<!--        <option value="DONE">DONE</option>-->
+<!--      </select>-->
+<!--    </div>-->
+<!--    <form class="d-flex" role="search">-->
+<!--      <input class="form-control me-2" type="search" placeholder="Search here..." aria-label="Search">-->
+<!--      <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>-->
+<!--    </form>-->
+<!--  </div>-->
+
+<!--  <table class="table table-hover">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>STT</th>-->
+<!--      <th>Candidate Name</th>-->
+<!--      <th>Recruitment Name</th>-->
+<!--      <th>Created At</th>-->
+<!--      <th>Update At</th>-->
+<!--      <th>Process</th>-->
+<!--      <th>Actions</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr>-->
+<!--      <td>1</td>-->
+<!--      <td>Nguyen Van A</td>-->
+<!--      <td>Frontend Developer</td>-->
+<!--      <td>2025-06-10</td>-->
+<!--      <td>2025-06-12</td>-->
+<!--      <td><span class="status status-pending">PENDING</span></td>-->
+<!--      <td>-->
+<!--        <a class="delete-icon" data-bs-toggle="modal" data-bs-target="#destroyInterviewModal"><i class="fas fa-trash"></i></a>-->
+<!--        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="">-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>2</td>-->
+<!--      <td>Tran Thi B</td>-->
+<!--      <td>Backend Intern</td>-->
+<!--      <td>2025-06-11</td>-->
+<!--      <td>2025-06-13</td>-->
+<!--      <td><span class="status status-handling">HANDLING</span></td>-->
+<!--      <td>-->
+<!--        <a class="delete-icon" data-bs-toggle="modal" data-bs-target="#destroyInterviewModal"><i class="fas fa-trash"></i></a>-->
+<!--        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="">-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>3</td>-->
+<!--      <td>Le Van C</td>-->
+<!--      <td>UI/UX Designer</td>-->
+<!--      <td>2025-06-12</td>-->
+<!--      <td>2025-06-14</td>-->
+<!--      <td><span class="status status-interviewing">INTERVIEWING</span></td>-->
+<!--      <td>-->
+<!--        <a class="delete-icon" data-bs-toggle="modal" data-bs-target="#destroyInterviewModal"><i class="fas fa-trash"></i></a>-->
+<!--        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="">-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>4</td>-->
+<!--      <td>Pham Thi D</td>-->
+<!--      <td>QA Tester</td>-->
+<!--      <td>2025-06-13</td>-->
+<!--      <td>2025-06-15</td>-->
+<!--      <td><span class="status status-done">DONE</span></td>-->
+<!--      <td>-->
+<!--        <a class="delete-icon" data-bs-toggle="modal" data-bs-target="#destroyInterviewModal"><i class="fas fa-trash"></i></a>-->
+<!--        <img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750216158/_Button_base_z4xsuv.png" alt="">-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
+
+<!--  <div class="pagination">-->
+<!--    <span class="active">1</span>-->
+<!--    <a href="#">2</a>-->
+<!--    <a href="#">3</a>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Modal Destroy Interview &ndash;&gt;-->
+<!--<div class="modal fade" id="destroyInterviewModal" tabindex="-1" aria-labelledby="destroyInterviewModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="destroyInterviewModalLabel">Destroy Interview</h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <label for="destroyReason" class="form-label">Destroy Reason <span class="text-danger">*</span></label>-->
+<!--        <textarea id="destroyReason" class="form-control" rows="4" placeholder="Enter reason..." required></textarea>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>-->
+<!--        <button type="button" class="btn btn-danger">Save</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; Interview Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="interviewModal" tabindex="-1" aria-labelledby="interviewModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered">-->
+<!--    <div class="modal-content rounded-4 shadow">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title fw-bold" id="interviewModalLabel">Interview</h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+
+<!--      <form method="post" th:action="@{/interview/save}">-->
+<!--        <div class="modal-body">-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Interview Link <span class="text-danger">*</span></label>-->
+<!--            <input type="text" class="form-control" name="interviewLink" required />-->
+<!--          </div>-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Interview Time <span class="text-danger">*</span></label>-->
+<!--            <input type="datetime-local" class="form-control" name="interviewTime" required />-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="modal-footer">-->
+<!--          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>-->
+<!--          <button type="submit" class="btn btn-danger">Save</button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; Approve Interview Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="approveInterviewModal" tabindex="-1" aria-labelledby="approveInterviewModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered">-->
+<!--    <div class="modal-content rounded-4 shadow">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title fw-bold" id="approveInterviewModalLabel">Approve Interview</h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+
+<!--      <form method="post" th:action="@{/interview/approve}">-->
+<!--        <div class="modal-body">-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Interview Result <span class="text-danger">*</span></label>-->
+<!--            <input type="text" class="form-control" name="interviewResult" required />-->
+<!--          </div>-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Interview Result Note <span class="text-danger">*</span></label>-->
+<!--            <textarea class="form-control" name="interviewResultNote" rows="3" required></textarea>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="modal-footer">-->
+<!--          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>-->
+<!--          <button type="submit" class="btn btn-danger">Save</button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Bootstrap JS (required for modal to work) &ndash;&gt;-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Application Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --sidebar-width: 280px;
+      --primary-color: #0d6efd;
+      --bg-color: #f8f9fa;
+      --text-color: #333;
+      --border-color: #eee;
+      --error-color: #dc3545;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      margin: 0;
+      display: flex;
+    }
+
+    .sidebar {
+      width: var(--sidebar-width);
+      height: 100vh;
+      position: fixed;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .nav-link:hover {
+      background-color: #f0f7ff;
+      color: #0d6efd;
+    }
+
+    .nav-link.active {
+      background-color: #e9ecef;
+      color: #0d6efd;
+      font-weight: 500;
+    }
+
+    .main-content {
+      margin-left: var(--sidebar-width);
+      padding: 20px;
+      width: calc(100% - var(--sidebar-width));
+    }
+
+    .table th {
+      border-top: none;
+      font-weight: 600;
+      color: #6c757d;
+    }
+
+    .status {
+      padding: 4px 10px;
+      border-radius: 5px;
+      font-weight: 500;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+    }
+
+    .status-pending {
+      background-color: #ffe8a1;
+      color: #856404;
+    }
+
+    .status-handling {
+      background-color: #e0d7ff;
+      color: #4e00b3;
+    }
+
+    .status-interviewing {
+      background-color: #b8ecff;
+      color: #004085;
+    }
+
+    .status-done {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .status-finished {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .edit-icon, .delete-icon {
+      text-decoration: none;
+      font-size: 1rem;
+      margin-right: 8px;
+      color: #6c757d;
+      cursor: pointer;
+    }
+
+    .edit-icon:hover {
+      color: #198754;
+    }
+
+    .delete-icon:hover {
+      color: var(--error-color);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 20px;
+    }
+
+    .pagination a, .pagination span {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #fff;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .pagination .active {
+      background-color: #dc3545;
+      color: #fff;
+      border-color: #dc3545;
+    }
+
+    .pagination a:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+<!-- Sidebar sử dụng Thymeleaf fragment -->
+<div th:insert="fragments/sidebar_admin::SIDEBAR_ADMIN"></div>
+
+<!-- Main content -->
+<div class="main-content">
+  <h4><i class="fas fa-table"></i> Application</h4>
+
+  <div th:if="${successMessage}" class="alert alert-success" role="alert" th:text="${successMessage}"></div>
+  <div th:if="${errorMessage}" class="alert alert-danger" role="alert" th:text="${errorMessage}"></div>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+      <select class="form-select" style="width: 150px;" th:field="*{progress}">
+        <option value="">Process</option>
+        <option value="PENDING">PENDING</option>
+        <option value="HANDLING">HANDLING</option>
+        <option value="INTERVIEWING">INTERVIEWING</option>
+        <option value="DONE">DONE</option>
+        <option value="FINISHED">FINISHED</option>
+      </select>
+    </div>
+    <form class="d-flex" role="search" th:action="@{/admin/application}" method="get">
+      <input class="form-control me-2" type="search" name="progress" placeholder="Search by progress..." aria-label="Search">
+      <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+    </form>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>STT</th>
+      <th>Candidate Name</th>
+      <th>Recruitment Name</th>
+      <th>Created At</th>
+      <th>Updated At</th>
+      <th>Process</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="app, iterStat : ${applications}">
+      <td th:text="${iterStat.count + (currentPage * 5)}"></td>
+      <td th:text="${app.candidate.name}"></td>
+      <td th:text="${app.recruitmentPosition.name}"></td>
+      <td th:text="${app.createdAt != null} ? ${app.createdAt.format(#dates.create('dd/MM/yyyy'))} : ''"></td>
+      <td th:text="${app.updatedAt != null} ? ${app.updatedAt.format(#dates.create('dd/MM/yyyy'))} : ''"></td>
+      <td>
+        <span th:class="'status status-' + ${app.progress.toString().toLowerCase()}" th:text="${app.progress}"></span>
+      </td>
+      <td>
+        <a th:href="@{/admin/application/delete/{id}(id=${app.id})}" class="delete-icon" data-bs-toggle="modal" th:data-bs-target="'#destroyInterviewModal' + ${app.id}"><i class="fas fa-trash"></i></a>
+        <a th:href="@{/admin/application/interview/{id}(id=${app.id})}" class="edit-icon" data-bs-toggle="modal" th:data-bs-target="'#interviewModal' + ${app.id}"><i class="fas fa-calendar-alt"></i></a>
+        <a th:href="@{/admin/application/approve/{id}(id=${app.id})}" class="edit-icon" data-bs-toggle="modal" th:data-bs-target="'#approveInterviewModal' + ${app.id}"><i class="fas fa-check"></i></a>
+      </td>
+    </tr>
+    <tr th:if="${applications.size() == 0}">
+      <td colspan="7" class="text-center">Không tìm thấy ứng dụng nào.</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <a th:href="@{/admin/application(page=${currentPage - 1}, progress=${progress})}" th:class="${currentPage == 0} ? 'disabled' : ''">«</a>
+    <a th:each="i : ${#numbers.sequence(0, totalPages - 1)}" th:href="@{/admin/application(page=${i}, progress=${progress})}" th:class="${i == currentPage} ? 'active' : ''" th:text="${i + 1}"></a>
+    <a th:href="@{/admin/application(page=${currentPage + 1}, progress=${progress})}" th:class="${currentPage == totalPages - 1} ? 'disabled' : ''">»</a>
+  </div>
+</div>
+
+<!-- Modal Destroy Interview -->
+<div th:each="app : ${applications}" class="modal fade" th:id="'destroyInterviewModal' + ${app.id}" tabindex="-1" th:attr="aria-labelledby='destroyInterviewModalLabel' + ${app.id}" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" th:id="'destroyInterviewModalLabel' + ${app.id}">Hủy ứng dụng</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form th:action="@{/admin/application/delete/{id}(id=${app.id})}" method="post">
+        <div class="modal-body">
+          <label for="destroyReason" class="form-label">Lý do hủy <span class="text-danger">*</span></label>
+          <textarea id="destroyReason" name="canceledReason" class="form-control" rows="4" placeholder="Nhập lý do..." required></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+          <button type="submit" class="btn btn-danger">Lưu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Interview Modal -->
+<div th:each="app : ${applications}" class="modal fade" th:id="'interviewModal' + ${app.id}" tabindex="-1" th:attr="aria-labelledby='interviewModalLabel' + ${app.id}" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" th:id="'interviewModalLabel' + ${app.id}">Lên lịch phỏng vấn</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form th:action="@{/admin/application/interview/{id}(id=${app.id})}" method="post">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Link phỏng vấn <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" name="interviewUrl" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Thời gian phỏng vấn <span class="text-danger">*</span></label>
+            <input type="datetime-local" class="form-control" name="interviewDate" required />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hủy</button>
+          <button type="submit" class="btn btn-danger">Lưu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Approve Interview Modal -->
+<div th:each="app : ${applications}" class="modal fade" th:id="'approveInterviewModal' + ${app.id}" tabindex="-1" th:attr="aria-labelledby='approveInterviewModalLabel' + ${app.id}" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" th:id="'approveInterviewModalLabel' + ${app.id}">Phê duyệt phỏng vấn</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form th:action="@{/admin/application/approve/{id}(id=${app.id})}" method="post">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Kết quả phỏng vấn <span class="text-danger">*</span></label>
+            <select class="form-select" name="interviewResult" required>
+              <option value="PASSED">PASSED</option>
+              <option value="FAILED">FAILED</option>
+              <option value="WAITING">WAITING</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Ghi chú kết quả <span class="text-danger">*</span></label>
+            <textarea class="form-control" name="resultNote" rows="3" required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Hủy</button>
+          <button type="submit" class="btn btn-danger">Lưu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

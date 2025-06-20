@@ -311,184 +311,184 @@
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Internship positions at Rikkei Education</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-<body class="bg-gray-100 font-sans ">
-<div class="flex max-w-7xl mx-auto mt-6">
-    <div class="flex gap-6 p-6">
-        <!-- Main content -->
-        <div class="w-2/3 space-y-6">
-            <!-- Job Overview -->
-            <div class="bg-white shadow rounded-md p-6">
-                <h2 class="text-lg font-bold mb-3">Front End Developer</h2>
-                <div class="flex flex-wrap gap-2 mb-3">
-                    <span class="px-2 py-1 bg-blue-100 text-blue-600 text-sm rounded">ReactJS</span>
-                    <span class="px-2 py-1 bg-blue-100 text-blue-600 text-sm rounded">Java</span>
-                </div>
+<%--<!DOCTYPE html>--%>
+<%--<html lang="en">--%>
+<%--<head>--%>
+<%--    <meta charset="UTF-8" />--%>
+<%--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />--%>
+<%--    <title>Internship positions at Rikkei Education</title>--%>
+<%--    <script src="https://cdn.tailwindcss.com"></script>--%>
+<%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />--%>
+<%--</head>--%>
+<%--<body class="bg-gray-100 font-sans ">--%>
+<%--<div class="flex max-w-7xl mx-auto mt-6">--%>
+<%--    <div class="flex gap-6 p-6">--%>
+<%--        <!-- Main content -->--%>
+<%--        <div class="w-2/3 space-y-6">--%>
+<%--            <!-- Job Overview -->--%>
+<%--            <div class="bg-white shadow rounded-md p-6">--%>
+<%--                <h2 class="text-lg font-bold mb-3">Front End Developer</h2>--%>
+<%--                <div class="flex flex-wrap gap-2 mb-3">--%>
+<%--                    <span class="px-2 py-1 bg-blue-100 text-blue-600 text-sm rounded">ReactJS</span>--%>
+<%--                    <span class="px-2 py-1 bg-blue-100 text-blue-600 text-sm rounded">Java</span>--%>
+<%--                </div>--%>
 
-                <div class="grid grid-cols-3 gap-4 text-sm text-gray-600">
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-map-marker-alt text-red-500"></i> <span>Hà Nội</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-clock text-yellow-500"></i> <span>Part Time</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-user-graduate text-blue-500"></i> <span>Fresher</span>
-                    </div>
-                </div>
+<%--                <div class="grid grid-cols-3 gap-4 text-sm text-gray-600">--%>
+<%--                    <div class="flex items-center gap-2">--%>
+<%--                        <i class="fas fa-map-marker-alt text-red-500"></i> <span>Hà Nội</span>--%>
+<%--                    </div>--%>
+<%--                    <div class="flex items-center gap-2">--%>
+<%--                        <i class="fas fa-clock text-yellow-500"></i> <span>Part Time</span>--%>
+<%--                    </div>--%>
+<%--                    <div class="flex items-center gap-2">--%>
+<%--                        <i class="fas fa-user-graduate text-blue-500"></i> <span>Fresher</span>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
 
-                <div class="mt-3 text-sm text-gray-600 flex items-center gap-2">
-                    <i class="fas fa-dollar-sign text-green-500"></i>
-                    <span>Range: 1,200$ - 2,200$</span>
-                </div>
+<%--                <div class="mt-3 text-sm text-gray-600 flex items-center gap-2">--%>
+<%--                    <i class="fas fa-dollar-sign text-green-500"></i>--%>
+<%--                    <span>Range: 1,200$ - 2,200$</span>--%>
+<%--                </div>--%>
 
-                <div class="mt-1 text-sm text-gray-500 flex items-center gap-2">
-                    <i class="fas fa-calendar-alt text-purple-500"></i>
-                    <span>2 month later</span>
-                </div>
+<%--                <div class="mt-1 text-sm text-gray-500 flex items-center gap-2">--%>
+<%--                    <i class="fas fa-calendar-alt text-purple-500"></i>--%>
+<%--                    <span>2 month later</span>--%>
+<%--                </div>--%>
 
-                <button id="applyNowBtn" class="mt-4 w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded">Apply Now</button>
-            </div>
+<%--                <button id="applyNowBtn" class="mt-4 w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded">Apply Now</button>--%>
+<%--            </div>--%>
 
-            <!-- Job Description -->
-            <div class="bg-white shadow rounded-md p-6">
-                <h3 class="text-base font-bold border-l-4 border-red-500 pl-2 mb-4">Recruitment Details</h3>
+<%--            <!-- Job Description -->--%>
+<%--            <div class="bg-white shadow rounded-md p-6">--%>
+<%--                <h3 class="text-base font-bold border-l-4 border-red-500 pl-2 mb-4">Recruitment Details</h3>--%>
 
-                <h4 class="font-semibold mb-2">I. Mo ta cong viec</h4>
-                <ul class="list-decimal list-inside text-sm text-gray-700 space-y-1">
-                    <li>Tham gia vào quy trình xây dựng Dashboard, phân tích dữ liệu phục vụ nhu cầu vận hành.</li>
-                    <li>Phân tích đưa ra đề xuất phục vụ các quyết định kinh doanh...</li>
-                    <li>Tham gia xây dựng nền tảng phân tích dữ liệu BI-Self Service...</li>
-                    <li>Tham gia quá trình thiết kế và tổ chức dữ liệu...</li>
-                    <li>Triển khai, vận hành, hỗ trợ các dịch vụ khai thác dữ liệu...</li>
-                </ul>
+<%--                <h4 class="font-semibold mb-2">I. Mo ta cong viec</h4>--%>
+<%--                <ul class="list-decimal list-inside text-sm text-gray-700 space-y-1">--%>
+<%--                    <li>Tham gia vào quy trình xây dựng Dashboard, phân tích dữ liệu phục vụ nhu cầu vận hành.</li>--%>
+<%--                    <li>Phân tích đưa ra đề xuất phục vụ các quyết định kinh doanh...</li>--%>
+<%--                    <li>Tham gia xây dựng nền tảng phân tích dữ liệu BI-Self Service...</li>--%>
+<%--                    <li>Tham gia quá trình thiết kế và tổ chức dữ liệu...</li>--%>
+<%--                    <li>Triển khai, vận hành, hỗ trợ các dịch vụ khai thác dữ liệu...</li>--%>
+<%--                </ul>--%>
 
-                <h4 class="font-semibold mt-4 mb-2">II. Yeu cau ung vien</h4>
-                <ul class="list-decimal list-inside text-sm text-gray-700 space-y-1">
-                    <li>Sinh viên năm cuối hoặc tốt nghiệp...</li>
-                    <li>Có kinh nghiệm trực quan hóa dữ liệu...</li>
-                    <li>Có kinh nghiệm làm việc với SQL...</li>
-                    <li>Am hiểu về các concept trong Data Warehouse...</li>
-                    <li>Có "business sense" tốt...</li>
-                    <li>Có khả năng xử lý lượng thông tin lớn...</li>
-                    <li>Kỹ năng làm việc nhóm hiệu quả.</li>
-                    <li>Kỹ năng giao tiếp tốt, cởi mở, thân thiện.</li>
-                </ul>
+<%--                <h4 class="font-semibold mt-4 mb-2">II. Yeu cau ung vien</h4>--%>
+<%--                <ul class="list-decimal list-inside text-sm text-gray-700 space-y-1">--%>
+<%--                    <li>Sinh viên năm cuối hoặc tốt nghiệp...</li>--%>
+<%--                    <li>Có kinh nghiệm trực quan hóa dữ liệu...</li>--%>
+<%--                    <li>Có kinh nghiệm làm việc với SQL...</li>--%>
+<%--                    <li>Am hiểu về các concept trong Data Warehouse...</li>--%>
+<%--                    <li>Có "business sense" tốt...</li>--%>
+<%--                    <li>Có khả năng xử lý lượng thông tin lớn...</li>--%>
+<%--                    <li>Kỹ năng làm việc nhóm hiệu quả.</li>--%>
+<%--                    <li>Kỹ năng giao tiếp tốt, cởi mở, thân thiện.</li>--%>
+<%--                </ul>--%>
 
-                <button id="applyNowBtnDesc" class="mt-6 w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded">Apply Now</button>
-            </div>
-        </div>
+<%--                <button id="applyNowBtnDesc" class="mt-6 w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded">Apply Now</button>--%>
+<%--            </div>--%>
+<%--        </div>--%>
 
-        <!-- Sidebar with other jobs -->
-        <div class="w-1/3 space-y-4">
-            <!-- Thẻ job bên phải -->
-            <div class="bg-white p-4 shadow rounded-md">
-                <h4 class="font-bold mb-2">Front End Developer</h4>
-                <div class="flex flex-wrap gap-2 mb-2">
-                    <span class="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded">ReactJS</span>
-                    <span class="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded">Java</span>
-                </div>
-                <p class="text-sm text-gray-600">Scale: Not updated</p>
-                <p class="text-sm text-gray-600">Field: Information technology</p>
-                <p class="text-sm text-gray-600">Location: Ha Noi City</p>
-            </div>
-            <!-- Danh sách các job khác -->
-            <div class="space-y-3">
-                <div class="border border-gray-300 p-4 rounded-md flex justify-between items-start">
-                    <div class="flex space-x-4">
-                        <div class="text-gray-500 text-3xl"><img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750086810/Frame_5_epvny2.png" alt=""></div>
-                        <div>
-                            <p class="font-bold text-gray-800">Front End Developer</p>
-                            <div class="flex space-x-2 mt-1">
-                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">ReactJS</span>
-                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">Java</span>
-                            </div>
-                            <p class="text-gray-500 text-sm mt-1">2 month later</p>
-                        </div>
-                    </div>
-                    <button class="bg-red-500 text-white px-4 py-1 rounded-md h-fit">Apply</button>
-                </div>
-                <div class="border border-gray-300 p-4 rounded-md flex justify-between items-start">
-                    <div class="flex space-x-4">
-                        <div class="text-gray-500 text-3xl"><img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750086810/Frame_5_epvny2.png" alt=""></div>
-                        <div>
-                            <p class="font-bold text-gray-800">Front End Developer</p>
-                            <div class="flex space-x-2 mt-1">
-                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">ReactJS</span>
-                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">Java</span>
-                            </div>
-                            <p class="text-gray-500 text-sm mt-1">2 month later</p>
-                        </div>
-                    </div>
-                    <button class="bg-red-500 text-white px-4 py-1 rounded-md h-fit">Apply</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<%--        <!-- Sidebar with other jobs -->--%>
+<%--        <div class="w-1/3 space-y-4">--%>
+<%--            <!-- Thẻ job bên phải -->--%>
+<%--            <div class="bg-white p-4 shadow rounded-md">--%>
+<%--                <h4 class="font-bold mb-2">Front End Developer</h4>--%>
+<%--                <div class="flex flex-wrap gap-2 mb-2">--%>
+<%--                    <span class="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded">ReactJS</span>--%>
+<%--                    <span class="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded">Java</span>--%>
+<%--                </div>--%>
+<%--                <p class="text-sm text-gray-600">Scale: Not updated</p>--%>
+<%--                <p class="text-sm text-gray-600">Field: Information technology</p>--%>
+<%--                <p class="text-sm text-gray-600">Location: Ha Noi City</p>--%>
+<%--            </div>--%>
+<%--            <!-- Danh sách các job khác -->--%>
+<%--            <div class="space-y-3">--%>
+<%--                <div class="border border-gray-300 p-4 rounded-md flex justify-between items-start">--%>
+<%--                    <div class="flex space-x-4">--%>
+<%--                        <div class="text-gray-500 text-3xl"><img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750086810/Frame_5_epvny2.png" alt=""></div>--%>
+<%--                        <div>--%>
+<%--                            <p class="font-bold text-gray-800">Front End Developer</p>--%>
+<%--                            <div class="flex space-x-2 mt-1">--%>
+<%--                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">ReactJS</span>--%>
+<%--                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">Java</span>--%>
+<%--                            </div>--%>
+<%--                            <p class="text-gray-500 text-sm mt-1">2 month later</p>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <button class="bg-red-500 text-white px-4 py-1 rounded-md h-fit">Apply</button>--%>
+<%--                </div>--%>
+<%--                <div class="border border-gray-300 p-4 rounded-md flex justify-between items-start">--%>
+<%--                    <div class="flex space-x-4">--%>
+<%--                        <div class="text-gray-500 text-3xl"><img src="https://res.cloudinary.com/dmghszorv/image/upload/v1750086810/Frame_5_epvny2.png" alt=""></div>--%>
+<%--                        <div>--%>
+<%--                            <p class="font-bold text-gray-800">Front End Developer</p>--%>
+<%--                            <div class="flex space-x-2 mt-1">--%>
+<%--                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">ReactJS</span>--%>
+<%--                                <span class="bg-gray-200 text-sm px-2 py-1 rounded">Java</span>--%>
+<%--                            </div>--%>
+<%--                            <p class="text-gray-500 text-sm mt-1">2 month later</p>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <button class="bg-red-500 text-white px-4 py-1 rounded-md h-fit">Apply</button>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
-<!-- Apply Now Modal -->
-<div id="applyModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-        <div class="flex justify-between items-center mb-4">
-            <h2 class="text-lg font-semibold">Apply Now</h2>
-            <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700">&times;</button>
-        </div>
-        <form class="space-y-4">
-            <div>
-                <label class="block text-sm font-medium text-gray-700">CV URL <span class="text-red-500">*</span></label>
-                <input type="text" id="cvUrl" class="w-full border border-gray-300 rounded-md px-3 py-2 mt-1" placeholder="Enter CV URL" />
-            </div>
-            <div class="flex justify-end space-x-2">
-                <button type="button" id="cancelModalBtn" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100">Cancel</button>
-                <button type="submit" id="saveModalBtn" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">Save</button>
-            </div>
-        </form>
-    </div>
-</div>
+<%--<!-- Apply Now Modal -->--%>
+<%--<div id="applyModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">--%>
+<%--    <div class="bg-white p-6 rounded-lg shadow-lg w-96">--%>
+<%--        <div class="flex justify-between items-center mb-4">--%>
+<%--            <h2 class="text-lg font-semibold">Apply Now</h2>--%>
+<%--            <button id="closeModalBtn" class="text-gray-500 hover:text-gray-700">&times;</button>--%>
+<%--        </div>--%>
+<%--        <form class="space-y-4">--%>
+<%--            <div>--%>
+<%--                <label class="block text-sm font-medium text-gray-700">CV URL <span class="text-red-500">*</span></label>--%>
+<%--                <input type="text" id="cvUrl" class="w-full border border-gray-300 rounded-md px-3 py-2 mt-1" placeholder="Enter CV URL" />--%>
+<%--            </div>--%>
+<%--            <div class="flex justify-end space-x-2">--%>
+<%--                <button type="button" id="cancelModalBtn" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100">Cancel</button>--%>
+<%--                <button type="submit" id="saveModalBtn" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">Save</button>--%>
+<%--            </div>--%>
+<%--        </form>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
-<script>
-    // Get all Apply Now buttons
-    const applyButtons = document.querySelectorAll('#applyNowBtn, #applyNowBtnDesc, .bg-red-500');
-    const modal = document.getElementById('applyModal');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const cancelModalBtn = document.getElementById('cancelModalBtn');
+<%--<script>--%>
+<%--    // Get all Apply Now buttons--%>
+<%--    const applyButtons = document.querySelectorAll('#applyNowBtn, #applyNowBtnDesc, .bg-red-500');--%>
+<%--    const modal = document.getElementById('applyModal');--%>
+<%--    const closeModalBtn = document.getElementById('closeModalBtn');--%>
+<%--    const cancelModalBtn = document.getElementById('cancelModalBtn');--%>
 
-    // Open modal when Apply Now is clicked
-    applyButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent form submission or default behavior
-            modal.classList.remove('hidden');
-        });
-    });
+<%--    // Open modal when Apply Now is clicked--%>
+<%--    applyButtons.forEach(button => {--%>
+<%--        button.addEventListener('click', (e) => {--%>
+<%--            e.preventDefault(); // Prevent form submission or default behavior--%>
+<%--            modal.classList.remove('hidden');--%>
+<%--        });--%>
+<%--    });--%>
 
-    // Close modal
-    closeModalBtn.addEventListener('click', () => {
-        modal.classList.add('hidden');
-    });
+<%--    // Close modal--%>
+<%--    closeModalBtn.addEventListener('click', () => {--%>
+<%--        modal.classList.add('hidden');--%>
+<%--    });--%>
 
-    cancelModalBtn.addEventListener('click', () => {
-        modal.classList.add('hidden');
-    });
+<%--    cancelModalBtn.addEventListener('click', () => {--%>
+<%--        modal.classList.add('hidden');--%>
+<%--    });--%>
 
-    // Handle form submission (optional - add your logic here)
-    document.querySelector('#applyModal form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const cvUrl = document.getElementById('cvUrl').value;
-        console.log('CV URL submitted:', cvUrl);
-        modal.classList.add('hidden'); // Close modal after submission
-    });
-</script>
-</body>
-</html>
+<%--    // Handle form submission (optional - add your logic here)--%>
+<%--    document.querySelector('#applyModal form').addEventListener('submit', (e) => {--%>
+<%--        e.preventDefault();--%>
+<%--        const cvUrl = document.getElementById('cvUrl').value;--%>
+<%--        console.log('CV URL submitted:', cvUrl);--%>
+<%--        modal.classList.add('hidden'); // Close modal after submission--%>
+<%--    });--%>
+<%--</script>--%>
+<%--</body>--%>
+<%--</html>--%>
 
 
 <%--<!DOCTYPE html>--%>
@@ -787,3 +787,234 @@
 
 <%--</body>--%>
 <%--</html>--%>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --sidebar-width: 280px;
+            --primary-color: #0d6efd;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #eee;
+            --error-color: #dc3545;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 20px;
+            width: calc(100% - var(--sidebar-width));
+        }
+
+        .table th {
+            border-top: none;
+            font-weight: 600;
+            color: #6c757d;
+        }
+
+        .status {
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+
+        .status-pending {
+            background-color: #ffe8a1;
+            color: #856404;
+        }
+
+        .status-handling {
+            background-color: #e0d7ff;
+            color: #4e00b3;
+        }
+
+        .status-interviewing {
+            background-color: #b8ecff;
+            color: #004085;
+        }
+
+        .status-done {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .edit-icon, .delete-icon {
+            text-decoration: none;
+            font-size: 1rem;
+            margin-right: 8px;
+            color: #6c757d;
+        }
+
+        .edit-icon:hover {
+            color: #198754;
+        }
+
+        .delete-icon:hover {
+            color: var(--error-color);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .pagination a, .pagination span {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .pagination .active {
+            background-color: #dc3545;
+            color: #fff;
+            border-color: #dc3545;
+        }
+
+        .pagination a:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sidebar sử dụng Thymeleaf fragment -->
+<div th:insert="fragments/sidebar_admin::SIDEBAR_ADMIN"></div>
+
+<!-- Main content -->
+<div class="main-content">
+    <h4><i class="fas fa-table"></i> Application</h4>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <select class="form-select" style="width: 150px;">
+                <option selected>Process</option>
+                <option value="PENDING">PENDING</option>
+                <option value="HANDLING">HANDLING</option>
+                <option value="INTERVIEWING">INTERVIEWING</option>
+                <option value="DONE">DONE</option>
+            </select>
+        </div>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search here..." aria-label="Search">
+            <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Candidate Name</th>
+            <th>Recruitment Name</th>
+            <th>Created At</th>
+            <th>Update At</th>
+            <th>Process</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Nguyen Van A</td>
+            <td>Frontend Developer</td>
+            <td>2025-06-10</td>
+            <td>2025-06-12</td>
+            <td><span class="status status-pending">PENDING</span></td>
+            <td>
+                <a href="#" class="delete-icon" title="Delete"><i class="fas fa-trash"></i></a>
+                <a href="#" class="edit-icon" title="Edit"><i class="fas fa-file-alt"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Tran Thi B</td>
+            <td>Backend Intern</td>
+            <td>2025-06-11</td>
+            <td>2025-06-13</td>
+            <td><span class="status status-handling">HANDLING</span></td>
+            <td>
+                <a href="#" class="delete-icon"><i class="fas fa-trash"></i></a>
+                <a href="#" class="edit-icon"><i class="fas fa-file-alt"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Le Van C</td>
+            <td>UI/UX Designer</td>
+            <td>2025-06-12</td>
+            <td>2025-06-14</td>
+            <td><span class="status status-interviewing">INTERVIEWING</span></td>
+            <td>
+                <a href="#" class="delete-icon"><i class="fas fa-trash"></i></a>
+                <a href="#" class="edit-icon"><i class="fas fa-file-alt"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Pham Thi D</td>
+            <td>QA Tester</td>
+            <td>2025-06-13</td>
+            <td>2025-06-15</td>
+            <td><span class="status status-done">DONE</span></td>
+            <td>
+                <a href="#" class="delete-icon"><i class="fas fa-trash"></i></a>
+                <a href="#" class="edit-icon"><i class="fas fa-file-alt"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <span class="active">1</span>
+        <a href="#">2</a>
+        <a href="#">3</a>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="destroyModal" tabindex="-1" aria-labelledby="destroyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="destroyModalLabel">Destroy Interview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="destroyReason" class="form-label fw-semibold">Destroy Reason <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="destroyReason" rows="5" placeholder="Enter reason..."></textarea>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#destroyModal">
+    Open Destroy Modal
+</button>
+
+
+</body>
+</html>

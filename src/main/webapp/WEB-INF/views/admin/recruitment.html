@@ -1,0 +1,662 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vị trí tuyển dụng</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --sidebar-width: 280px;
+      --primary-color: #dc3545;
+      --bg-color: #f8f9fa;
+      --text-color: #333;
+      --border-color: #eee;
+      --error-color: #dc3545;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      margin: 0;
+      display: flex;
+    }
+
+    .sidebar {
+      width: var(--sidebar-width);
+      height: 100vh;
+      position: fixed;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .nav-link:hover {
+      background-color: #f0f7ff;
+      color: var(--primary-color);
+    }
+
+    .nav-link.active {
+      background-color: #e9ecef;
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+
+    .main-content {
+      margin-left: var(--sidebar-width);
+      padding: 20px;
+      width: calc(100% - var(--sidebar-width));
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .add-button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .add-button:hover {
+      background-color: #c82333;
+    }
+
+    .search-bar {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+    }
+
+    .table-container {
+      margin-top: 20px;
+    }
+
+    .data-table {
+      width: 100%;
+      background-color: white;
+    }
+
+    .data-table th, .data-table td {
+      padding: 10px;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: left;
+    }
+
+    .data-table th {
+      background-color: #f8f9fa;
+      font-weight: 600;
+      color: #6c757d;
+    }
+
+    .technology-badge {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #ffe8e6;
+      color: var(--primary-color);
+      border-radius: 5px;
+      margin-right: 5px;
+    }
+
+    .actions a {
+      margin-right: 5px;
+      color: #6c757d;
+    }
+
+    .actions a:hover {
+      color: var(--primary-color);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 20px;
+    }
+
+    .pagination a, .pagination span {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .pagination a:hover {
+      background-color: #eee;
+    }
+
+    .pagination .active {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    .error-message {
+      color: var(--error-color);
+      font-size: 0.875em;
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+<div th:insert="fragments/sidebar_admin::SIDEBAR_ADMIN"></div>
+
+<div class="main-content">
+  <div th:if="${successMessage}" class="alert alert-success" role="alert" th:text="${successMessage}"></div>
+  <div th:if="${errorMessage}" class="alert alert-danger" role="alert" th:text="${errorMessage}"></div>
+
+  <div class="header">
+    <h2>Vị trí tuyển dụng</h2>
+    <div>
+      <button class="add-button" data-bs-toggle="modal" data-bs-target="#addModal">Thêm vị trí tuyển dụng</button>
+      <input type="text" class="search-bar ms-3" placeholder="Tìm kiếm..." id="searchInput">
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+      <tr>
+        <th>STT</th>
+        <th>Tên</th>
+        <th>Lương tối thiểu</th>
+        <th>Lương tối đa</th>
+        <th>Kinh nghiệm tối thiểu</th>
+        <th>Công nghệ</th>
+        <th>Ngày tạo</th>
+        <th>Hành động</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="position, iterStat : ${positions}">
+        <td th:text="${iterStat.count + (currentPage * 7)}"></td>
+        <td th:text="${position.name}"></td>
+        <td th:text="${position.minSalary} + ' $'"></td>
+        <td th:text="${position.maxSalary} + ' $'"></td>
+        <td th:text="${position.minExperience}"></td>
+
+<!--        <td>-->
+<!--          <span th:each="tech : ${position.recruitmentTechnologies}"-->
+<!--          th:text="${tech.technology.name}"-->
+<!--          class="technology-badge"></span>-->
+<!--          <span th:if="${position.recruitmentTechnologies.isEmpty()}" class="text-muted">Không có</span>-->
+<!--        </td>-->
+        <td>
+  <span th:each="tech : ${position.recruitmentTechnologies}"
+        th:if="${not #strings.endsWith(tech.technology.name, '_deleted') or #strings.endsWith(tech.technology.name, '_deleted')}"
+        th:text="${#strings.endsWith(tech.technology.name, '_deleted') ?
+                  #strings.replace(tech.technology.name, '_deleted', '') :
+                  tech.technology.name}"
+        class="technology-badge">
+  </span>
+
+          <span th:if="${position.recruitmentTechnologies.isEmpty()}" class="text-muted">Không có</span>
+        </td>
+
+        <td th:text="${position.createdDateFormatted}"></td>
+        <td class="actions">
+          <a th:href="@{/admin/recruitment/delete/{id}(id=${position.id})}" class="delete-btn" title="Xóa"><i class="fas fa-trash-alt"></i></a>
+          <a th:href="@{/admin/recruitment/edit/{id}(id=${position.id})}" class="edit-btn" title="Sửa"><i class="fas fa-pencil-alt"></i></a>
+        </td>
+      </tr>
+      <tr th:if="${positions.size() == 0}">
+        <td colspan="8" class="text-center text-muted">Không tìm thấy vị trí tuyển dụng.</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination">
+    <a th:href="@{/admin/recruitment(page=${currentPage - 1}, search=${param.search})}"
+       th:class="${currentPage == 0 ? 'disabled' : ''}">«</a>
+    <a th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+       th:href="@{/admin/recruitment(page=${i}, search=${param.search})}"
+       th:class="${i == currentPage ? 'active' : ''}"
+       th:text="${i + 1}"></a>
+    <a th:href="@{/admin/recruitment(page=${currentPage + 1}, search=${param.search})}"
+       th:class="${currentPage == totalPages - 1 ? 'disabled' : ''}">»</a>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addModalLabel">Thêm vị trí tuyển dụng</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form th:action="@{/admin/recruitment/add}" th:object="${newPosition}" method="post">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Tên <span class="text-danger">*</span></label>
+            <input type="text" th:field="*{name}" class="form-control" required>
+            <div th:if="${#fields.hasErrors('name')}" class="error-message" th:errors="*{name}"></div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Mô tả</label>
+            <textarea th:field="*{description}" class="form-control" rows="4"></textarea>
+            <div th:if="${#fields.hasErrors('description')}" class="error-message" th:errors="*{description}"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Lương tối thiểu <span class="text-danger">*</span></label>
+              <input type="number" step="0.01" th:field="*{minSalary}" class="form-control" required>
+              <div th:if="${#fields.hasErrors('minSalary')}" class="error-message" th:errors="*{minSalary}"></div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Lương tối đa <span class="text-danger">*</span></label>
+              <input type="number" step="0.01" th:field="*{maxSalary}" class="form-control" required>
+              <div th:if="${#fields.hasErrors('maxSalary')}" class="error-message" th:errors="*{maxSalary}"></div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Kinh nghiệm tối thiểu <span class="text-danger">*</span></label>
+            <input type="number" th:field="*{minExperience}" class="form-control" required>
+            <div th:if="${#fields.hasErrors('minExperience')}" class="error-message" th:errors="*{minExperience}"></div>
+          </div>
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Công nghệ <span class="text-danger">*</span></label>-->
+<!--            <select th:field="*{technologyIds}" class="form-select" multiple required>-->
+<!--              <option th:each="tech : ${technologies}" th:value="${tech.id}" th:text="${tech.name}"></option>-->
+<!--            </select>-->
+<!--            <div th:if="${#fields.hasErrors('technologyIds')}" class="error-message" th:errors="*{technologyIds}"></div>-->
+<!--          </div>-->
+          <div class="mb-3">
+            <label class="form-label">Công nghệ <span class="text-danger">*</span></label>
+            <select th:field="*{technologyIds}" class="form-select" multiple required>
+              <option th:each="tech : ${technologies}" th:value="${tech.id}" th:text="${tech.name}"></option>
+            </select>
+            <div th:if="${#fields.hasErrors('technologyIds')}" class="error-message" th:errors="*{technologyIds}"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Ngày tạo</label>
+              <input type="date" th:field="*{createdDate}" class="form-control">
+              <div th:if="${#fields.hasErrors('createdDate')}" class="error-message" th:errors="*{createdDate}"></div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Ngày hết hạn <span class="text-danger">*</span></label>
+              <input type="date" th:field="*{expiredDate}" class="form-control" required>
+              <div th:if="${#fields.hasErrors('expiredDate')}" class="error-message" th:errors="*{expiredDate}"></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>
+          <button type="submit" class="btn btn-danger">Lưu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('searchInput');
+    let searchTimer;
+
+    searchInput.addEventListener('input', function () {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(function () {
+        window.location.href = '/admin/recruitment?search=' + encodeURIComponent(searchInput.value);
+      }, 500);
+    });
+
+    searchInput.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        clearTimeout(searchTimer);
+        window.location.href = '/admin/recruitment?search=' + encodeURIComponent(searchInput.value);
+      }
+    });
+
+    document.querySelectorAll('.delete-btn').forEach(button => {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (confirm('Bạn có chắc muốn xóa vị trí này không?')) {
+          window.location.href = this.getAttribute('href');
+        }
+      });
+    });
+  });
+</script>
+</body>
+
+
+
+
+
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <title>Vị trí tuyển dụng</title>-->
+<!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">-->
+<!--  <style>-->
+<!--    :root {-->
+<!--      &#45;&#45;sidebar-width: 280px;-->
+<!--      &#45;&#45;primary-color: #dc3545;-->
+<!--      &#45;&#45;bg-color: #f8f9fa;-->
+<!--      &#45;&#45;text-color: #333;-->
+<!--      &#45;&#45;border-color: #eee;-->
+<!--      &#45;&#45;error-color: #dc3545;-->
+<!--    }-->
+
+<!--    body {-->
+<!--      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;-->
+<!--      background-color: var(&#45;&#45;bg-color);-->
+<!--      margin: 0;-->
+<!--      display: flex;-->
+<!--    }-->
+
+<!--    .sidebar {-->
+<!--      width: var(&#45;&#45;sidebar-width);-->
+<!--      height: 100vh;-->
+<!--      position: fixed;-->
+<!--      background-color: white;-->
+<!--      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--      padding: 20px;-->
+<!--      display: flex;-->
+<!--      flex-direction: column;-->
+<!--      justify-content: space-between;-->
+<!--    }-->
+
+<!--    .nav-link:hover {-->
+<!--      background-color: #f0f7ff;-->
+<!--      color: var(&#45;&#45;primary-color);-->
+<!--    }-->
+
+<!--    .nav-link.active {-->
+<!--      background-color: #e9ecef;-->
+<!--      color: var(&#45;&#45;primary-color);-->
+<!--      font-weight: 500;-->
+<!--    }-->
+
+<!--    .main-content {-->
+<!--      margin-left: var(&#45;&#45;sidebar-width);-->
+<!--      padding: 20px;-->
+<!--      width: calc(100% - var(&#45;&#45;sidebar-width));-->
+<!--    }-->
+
+<!--    .header {-->
+<!--      display: flex;-->
+<!--      justify-content: space-between;-->
+<!--      align-items: center;-->
+<!--      margin-bottom: 20px;-->
+<!--    }-->
+
+<!--    .add-button {-->
+<!--      background-color: var(&#45;&#45;primary-color);-->
+<!--      color: white;-->
+<!--      border: none;-->
+<!--      padding: 10px 20px;-->
+<!--      border-radius: 5px;-->
+<!--      cursor: pointer;-->
+<!--    }-->
+
+<!--    .add-button:hover {-->
+<!--      background-color: #c82333;-->
+<!--    }-->
+
+<!--    .search-bar {-->
+<!--      padding: 8px;-->
+<!--      border: 1px solid #ccc;-->
+<!--      border-radius: 5px;-->
+<!--      width: 200px;-->
+<!--    }-->
+
+<!--    .table-container {-->
+<!--      margin-top: 20px;-->
+<!--    }-->
+
+<!--    .data-table {-->
+<!--      width: 100%;-->
+<!--      background-color: white;-->
+<!--    }-->
+
+<!--    .data-table th, .data-table td {-->
+<!--      padding: 10px;-->
+<!--      border-bottom: 1px solid #e0e0e0;-->
+<!--      text-align: left;-->
+<!--    }-->
+
+<!--    .data-table th {-->
+<!--      background-color: #f8f9fa;-->
+<!--      font-weight: 600;-->
+<!--      color: #6c757d;-->
+<!--    }-->
+
+<!--    .technology-badge {-->
+<!--      display: inline-block;-->
+<!--      padding: 5px 10px;-->
+<!--      background-color: #ffe8e6;-->
+<!--      color: var(&#45;&#45;primary-color);-->
+<!--      border-radius: 5px;-->
+<!--      margin-right: 5px;-->
+<!--    }-->
+
+<!--    .actions a {-->
+<!--      margin-right: 5px;-->
+<!--      color: #6c757d;-->
+<!--    }-->
+
+<!--    .actions a:hover {-->
+<!--      color: var(&#45;&#45;primary-color);-->
+<!--    }-->
+
+<!--    .pagination {-->
+<!--      display: flex;-->
+<!--      justify-content: center;-->
+<!--      gap: 5px;-->
+<!--      margin-top: 20px;-->
+<!--    }-->
+
+<!--    .pagination a, .pagination span {-->
+<!--      padding: 8px 12px;-->
+<!--      border: 1px solid #ddd;-->
+<!--      border-radius: 5px;-->
+<!--      text-decoration: none;-->
+<!--      color: #333;-->
+<!--    }-->
+
+<!--    .pagination a:hover {-->
+<!--      background-color: #eee;-->
+<!--    }-->
+
+<!--    .pagination .active {-->
+<!--      background-color: var(&#45;&#45;primary-color);-->
+<!--      color: white;-->
+<!--      border-color: var(&#45;&#45;primary-color);-->
+<!--    }-->
+
+<!--    .error-message {-->
+<!--      color: var(&#45;&#45;error-color);-->
+<!--      font-size: 0.875em;-->
+<!--      margin-top: 0.25rem;-->
+<!--    }-->
+<!--  </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:insert="fragments/sidebar_admin::SIDEBAR_ADMIN"></div>-->
+
+<!--<div class="main-content">-->
+<!--  <div th:if="${successMessage}" class="alert alert-success" role="alert" th:text="${successMessage}"></div>-->
+<!--  <div th:if="${errorMessage}" class="alert alert-danger" role="alert" th:text="${errorMessage}"></div>-->
+
+<!--  <div class="header">-->
+<!--    <h2>Vị trí tuyển dụng</h2>-->
+<!--    <div>-->
+<!--      <button class="add-button" data-bs-toggle="modal" data-bs-target="#addModal">Thêm vị trí tuyển dụng</button>-->
+<!--      <input type="text" class="search-bar ms-3" placeholder="Tìm kiếm..." id="searchInput">-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="table-container">-->
+<!--    <table class="data-table">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th>STT</th>-->
+<!--        <th>Tên</th>-->
+<!--        <th>Lương tối thiểu</th>-->
+<!--        <th>Lương tối đa</th>-->
+<!--        <th>Kinh nghiệm tối thiểu</th>-->
+<!--        <th>Công nghệ</th>-->
+<!--        <th>Ngày tạo</th>-->
+<!--        <th>Hành động</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr th:each="position, iterStat : ${positions}">-->
+<!--        <td th:text="${iterStat.count + (currentPage * 7)}"></td>-->
+<!--        <td th:text="${position.name}"></td>-->
+<!--        <td th:text="${position.minSalary} + ' $'"></td>-->
+<!--        <td th:text="${position.maxSalary} + ' $'"></td>-->
+<!--        <td th:text="${position.minExperience}"></td>-->
+<!--        <td>-->
+<!--                    <span th:each="tech, techStat : ${position.recruitmentTechnologies}"-->
+<!--                          th:text="${tech.technology.name} + ${techStat.last ? '' : ', '}"-->
+<!--                          class="technology-badge"></span>-->
+<!--          <span th:if="${position.recruitmentTechnologies.isEmpty()}" class="text-muted">Không có</span>-->
+<!--        </td>-->
+<!--        <td th:text="${position.createdDateFormatted}"></td>-->
+<!--        <td class="actions">-->
+<!--          <a th:href="@{/admin/recruitment/delete/{id}(id=${position.id})}" class="delete-btn" title="Xóa"><i class="fas fa-trash-alt"></i></a>-->
+<!--          <a th:href="@{/admin/recruitment/edit/{id}(id=${position.id})}" class="edit-btn" title="Sửa"><i class="fas fa-pencil-alt"></i></a>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      <tr th:if="${positions.size() == 0}">-->
+<!--        <td colspan="8" class="text-center text-muted">Không tìm thấy vị trí tuyển dụng.</td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+
+<!--  <div class="pagination">-->
+<!--    <a th:href="@{/admin/recruitment(page=${currentPage - 1}, search=${param.search})}"-->
+<!--       th:class="${currentPage == 0 ? 'disabled' : ''}">«</a>-->
+<!--    <a th:each="i : ${#numbers.sequence(0, totalPages - 1)}"-->
+<!--       th:href="@{/admin/recruitment(page=${i}, search=${param.search})}"-->
+<!--       th:class="${i == currentPage ? 'active' : ''}"-->
+<!--       th:text="${i + 1}"></a>-->
+<!--    <a th:href="@{/admin/recruitment(page=${currentPage + 1}, search=${param.search})}"-->
+<!--       th:class="${currentPage == totalPages - 1 ? 'disabled' : ''}">»</a>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered modal-lg">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="addModalLabel">Thêm vị trí tuyển dụng</h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+<!--      <form th:action="@{/admin/recruitment/add}" th:object="${newPosition}" method="post">-->
+<!--        <div class="modal-body">-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Tên <span class="text-danger">*</span></label>-->
+<!--            <input type="text" th:field="*{name}" class="form-control" required>-->
+<!--            <div th:if="${#fields.hasErrors('name')}" class="error-message" th:errors="*{name}"></div>-->
+<!--          </div>-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Mô tả</label>-->
+<!--            <textarea th:field="*{description}" class="form-control" rows="4"></textarea>-->
+<!--            <div th:if="${#fields.hasErrors('description')}" class="error-message" th:errors="*{description}"></div>-->
+<!--          </div>-->
+<!--          <div class="row">-->
+<!--            <div class="col-md-6 mb-3">-->
+<!--              <label class="form-label">Lương tối thiểu <span class="text-danger">*</span></label>-->
+<!--              <input type="number" step="0.01" th:field="*{minSalary}" class="form-control" required>-->
+<!--              <div th:if="${#fields.hasErrors('minSalary')}" class="error-message" th:errors="*{minSalary}"></div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6 mb-3">-->
+<!--              <label class="form-label">Lương tối đa <span class="text-danger">*</span></label>-->
+<!--              <input type="number" step="0.01" th:field="*{maxSalary}" class="form-control" required>-->
+<!--              <div th:if="${#fields.hasErrors('maxSalary')}" class="error-message" th:errors="*{maxSalary}"></div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Kinh nghiệm tối thiểu <span class="text-danger">*</span></label>-->
+<!--            <input type="number" th:field="*{minExperience}" class="form-control" required>-->
+<!--            <div th:if="${#fields.hasErrors('minExperience')}" class="error-message" th:errors="*{minExperience}"></div>-->
+<!--          </div>-->
+<!--          <div class="mb-3">-->
+<!--            <label class="form-label">Công nghệ <span class="text-danger">*</span></label>-->
+<!--            <select th:field="*{technologyIds}" class="form-select" multiple required>-->
+<!--              <option th:each="tech : ${technologies}" th:value="${tech.id}" th:text="${tech.name}"></option>-->
+<!--            </select>-->
+<!--            <div th:if="${#fields.hasErrors('technologyIds')}" class="error-message" th:errors="*{technologyIds}"></div>-->
+<!--          </div>-->
+<!--          <div class="row">-->
+<!--            <div class="col-md-6 mb-3">-->
+<!--              <label class="form-label">Ngày tạo</label>-->
+<!--              <input type="date" th:field="*{createdDate}" class="form-control">-->
+<!--              <div th:if="${#fields.hasErrors('createdDate')}" class="error-message" th:errors="*{createdDate}"></div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6 mb-3">-->
+<!--              <label class="form-label">Ngày hết hạn <span class="text-danger">*</span></label>-->
+<!--              <input type="date" th:field="*{expiredDate}" class="form-control" required>-->
+<!--              <div th:if="${#fields.hasErrors('expiredDate')}" class="error-message" th:errors="*{expiredDate}"></div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="modal-footer">-->
+<!--          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Hủy</button>-->
+<!--          <button type="submit" class="btn btn-danger">Lưu</button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--<script>-->
+<!--  document.addEventListener('DOMContentLoaded', function () {-->
+<!--    const searchInput = document.getElementById('searchInput');-->
+<!--    let searchTimer;-->
+
+<!--    searchInput.addEventListener('input', function () {-->
+<!--      clearTimeout(searchTimer);-->
+<!--      searchTimer = setTimeout(function () {-->
+<!--        window.location.href = '/admin/recruitment?search=' + encodeURIComponent(searchInput.value);-->
+<!--      }, 500);-->
+<!--    });-->
+
+<!--    searchInput.addEventListener('keypress', function (e) {-->
+<!--      if (e.key === 'Enter') {-->
+<!--        clearTimeout(searchTimer);-->
+<!--        window.location.href = '/admin/recruitment?search=' + encodeURIComponent(searchInput.value);-->
+<!--      }-->
+<!--    });-->
+
+<!--    document.querySelectorAll('.delete-btn').forEach(button => {-->
+<!--      button.addEventListener('click', function (e) {-->
+<!--        e.preventDefault();-->
+<!--        if (confirm('Bạn có chắc muốn xóa vị trí này không?')) {-->
+<!--          window.location.href = this.getAttribute('href');-->
+<!--        }-->
+<!--      });-->
+<!--    });-->
+<!--  });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
