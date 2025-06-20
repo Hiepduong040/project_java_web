@@ -462,17 +462,17 @@
 
   <div class="d-flex justify-content-between align-items-center mb-3">
     <div>
-      <select class="form-select" style="width: 150px;" th:field="*{progress}">
+      <select class="form-select" style="width: 150px;" name="progress" th:value="${progress}" onchange="this.form.submit()">
         <option value="">Process</option>
-        <option value="PENDING">PENDING</option>
-        <option value="HANDLING">HANDLING</option>
-        <option value="INTERVIEWING">INTERVIEWING</option>
-        <option value="DONE">DONE</option>
-        <option value="FINISHED">FINISHED</option>
+        <option value="PENDING" th:selected="${progress == 'PENDING'}">PENDING</option>
+        <option value="HANDLING" th:selected="${progress == 'HANDLING'}">HANDLING</option>
+        <option value="INTERVIEWING" th:selected="${progress == 'INTERVIEWING'}">INTERVIEWING</option>
+        <option value="DONE" th:selected="${progress == 'DONE'}">DONE</option>
+        <option value="FINISHED" th:selected="${progress == 'FINISHED'}">FINISHED</option>
       </select>
     </div>
     <form class="d-flex" role="search" th:action="@{/admin/application}" method="get">
-      <input class="form-control me-2" type="search" name="progress" placeholder="Search by progress..." aria-label="Search">
+      <input class="form-control me-2" type="search" name="progress" placeholder="Search by progress..." aria-label="Search" th:value="${progress}">
       <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
     </form>
   </div>
@@ -494,8 +494,10 @@
       <td th:text="${iterStat.count + (currentPage * 5)}"></td>
       <td th:text="${app.candidate.name}"></td>
       <td th:text="${app.recruitmentPosition.name}"></td>
-      <td th:text="${app.createdAt != null} ? ${app.createdAt.format(#dates.create('dd/MM/yyyy'))} : ''"></td>
-      <td th:text="${app.updatedAt != null} ? ${app.updatedAt.format(#dates.create('dd/MM/yyyy'))} : ''"></td>
+      <td th:text="${app.createdAtFormatted}"></td>
+<!--      <td th:text="${app.updatedAtFormatted}"></td>-->
+      <td th:text="${app.updatedAt}"></td>
+
       <td>
         <span th:class="'status status-' + ${app.progress.toString().toLowerCase()}" th:text="${app.progress}"></span>
       </td>
